@@ -1,0 +1,7 @@
+@import "./typography.css";
+
+body {
+    font-family: "Maax", Helvetica, sans-serif !important;
+    overflow-y:scroll;
+}
+

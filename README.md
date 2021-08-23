@@ -1,2 +1,1 @@
-# HighView
-Website for highview aps
+# UNQTech Website

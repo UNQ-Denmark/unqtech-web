@@ -1,0 +1,62 @@
+[
+    {
+        "locale": "da",
+        "pathPrefix": "",
+        "pages": [
+            {
+                "componentName": "404",
+                "slug": "/404"
+            },
+            {
+                "componentName": "about",
+                "slug": "/om"
+            },
+            {
+                "componentName": "contact",
+                "slug": "/kontakt"
+            },
+            {
+                "componentName": "index",
+                "slug": "/"
+            },
+            {
+                "componentName": "services",
+                "slug": "/services"
+            },
+            {
+                "componentName": "blog",
+                "slug": "/blog"
+            }
+        ]
+    },
+    {
+        "locale": "en",
+        "pathPrefix": "en",
+        "pages": [
+            {
+                "componentName": "404",
+                "slug": "/404"
+            },
+            {
+                "componentName": "about",
+                "slug": "/about"
+            },
+            {
+                "componentName": "contact",
+                "slug": "/contact"
+            },
+            {
+                "componentName": "index",
+                "slug": "/"
+            },
+            {
+                "componentName": "services",
+                "slug": "/services"
+            },
+            {
+                "componentName": "blog",
+                "slug": "/blog"
+            }
+        ]
+    }
+]
