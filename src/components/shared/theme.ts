@@ -3,7 +3,8 @@
 
 enum bgLight {
     white = '#ffffff',
-    black =  '#1c1c1e'
+    black =  '#1c1c1e',
+    grey = '#FAFAFA'
 }
 
 enum txtLight {
@@ -39,7 +40,8 @@ const colors = {
     txtLight,
     greyLight,
     rainbowLight,
-    brandLight
+    brandLight,
+    blueGradient: "linear-gradient(85.79deg, #2F80ED 0%, #56CCF2 100%)"
 }
 
 enum effects {

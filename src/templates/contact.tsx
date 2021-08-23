@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import { SiteLayout, StyledContent } from '../components/layout/layout';
+import { SiteContent, SiteLayout } from '../components/layout/layout';
 
 import { PageContext } from '../pageContext';
 import Seo from '../components/shared/Seo';
-
 
 type Props = {
   pageContext: PageContext;
@@ -22,9 +21,9 @@ const ContactPage: React.FC<Props> = ({ pageContext }: Props) => {
         title="UNQ Kontakt"
        
       />
-      <StyledContent>
+      <SiteContent>
          
-      </StyledContent>
+      </SiteContent>
     </SiteLayout>
   );
 };

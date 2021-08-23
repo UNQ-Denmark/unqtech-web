@@ -40,12 +40,22 @@ const Seo = ({ title, description, image, meta, lang, keywords, pathname}: Props
   return (
     <Helmet title={seo.title} titleTemplate={titleTemplate} htmlAttributes={{lang}}>
       <meta name="description" content={seo.description} />
-      <meta name="image" content={seo.image} />
+      {seo.keywords && <meta property="keywords" content={seo.keywords} />}
+
+      {/* Google search engine */}
+      <meta itemProp="name" content={seo.title} />
+      <meta itemProp="description" content={seo.description} />
+      <meta itemProp="image" content={seo.image} />
+
+      {/* facebook card */}
       {seo.siteUrl && <meta property="og:url" content={seo.siteUrl} />}
+      <meta property="og:type" content="website" />
       {seo.title && <meta property="og:title" content={seo.title} />}
       {seo.description && ( <meta property="og:description" content={seo.description} /> )}
-      {seo.keywords && <meta property="keywords" content={seo.keywords} />}
       {seo.image && <meta property="og:image" content={seo.image} />}
+
+      {/* Twitter card */}
+      <meta name="twitter:card" content="summary_large_image" />
       {seo.title && <meta name="twitter:title" content={seo.title} />}
       {seo.description && ( <meta name="twitter:description" content={seo.description} /> )}
       {seo.image && <meta name="twitter:image" content={seo.image} />}
@@ -54,13 +64,13 @@ const Seo = ({ title, description, image, meta, lang, keywords, pathname}: Props
 };
 
 Seo.defaultProps = {
-  title: 'HighView',
-  description: `HighView ApS - Vi tilbyder professionelle sikkerheds løsninger, herunder ADK OG AIA anlæg`,
+  title: 'UNQTech',
+  description: `UNQTech - We love tech`,
   lang: `da`,
   meta: [],
   image: PropTypes.string,
-  keywords: ["AIA", "ADK", "Privat", "Sikkerhed", "IT Sikkerhed", "NOX alarmanlæg", "Jablotron JA100", "HighView", "Overvågning", "Erhvers sikkerhed", "adgangskontrolanlæg" ],
-  siteUrl: "https://highview.dk/"
+  keywords: ["vine", "wine", "Rødvin", "Hvidvin", "Rosé", "Bourgogne", "Beaujolais", "Jean-Paul Brun - Beaujolais", "Domaine Cheveau", "Domaine Saint Jean de Villecroze", "Lauraire des Lys - Minervois", "Økologisk vine"],
+  siteUrl: "https://unqtech.dk/"
 };
 
 const query = graphql`

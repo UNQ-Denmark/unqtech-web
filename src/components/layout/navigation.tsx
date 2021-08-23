@@ -1,185 +1,188 @@
-import { Dropdown, Menu } from 'antd';
-import { Link, navigate } from 'gatsby';
-import React, { useEffect, useState } from 'react';
-import { css, jsx } from '@emotion/react';
+import { INavigation, INavigationData } from './layout.interface';
+import React, { useState } from 'react';
+import { graphql, navigate, useStaticQuery } from 'gatsby';
 
-import { MenuOutlined } from '@ant-design/icons';
+import Burger from './burger';
+import { GatsbyImage } from 'gatsby-plugin-image';
+import { TextLinkTextSmall } from '../shared/button';
+import navigateTo from '../shared/pathHandler';
 import styled from '@emotion/styled';
 import { theme } from '../shared/theme';
 import useWindowWidth from '../shared/useWindowSize';
 
-/** @jsx jsx */
-
+const HeaderContainer = styled.div`
+  top: 0px;
+  position: fixed;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background: ${theme.colors.bgLight.white};
+  z-index: 999;
+`;
 
 const InnerHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 15px;
-  max-width: 1400px;
-  margin: 0 auto;
+  width: 100%;
   height: 100%;
-`;
-
-const StyledMenu = styled(Menu)`
-  padding: 0.5rem;
-  li {
-    padding-bottom: 0.5rem;
-  }
-`;
-
-const StyledMenuIcon = styled(MenuOutlined)`
-  margin-top: auto;
-  margin-bottom: auto;
-  color: ${theme.colors.brandLight.extra};
-  font-size: 30px;
+  background: ${theme.colors.bgLight.white};
+  border-bottom: 1px solid ${theme.colors.greyLight.grey10};
 `;
 
 const HeaderContent = styled.div`
   display: flex;
-  height: 100%;
-  align-self: center;
-  h1 {color: #fff;}
+  height: 80px;
+  width: 100%;
+  z-index: 50;
+`;
+
+const StyledLocaleImg = styled(GatsbyImage)`
+  margin: auto;
+  margin-right: 1.5rem;
+  cursor: pointer;
+  height: 1.5rem;
+  width: 1.5rem;
+  border-radius: 2rem;
 `;
 
 const Logo = styled.img`
+  height: 40px;
+  width: auto;
   align-self: center;
-  height: 100%;
-  margin-left: 0;
-  filter: invert(0%);
-  transition: all .4s ease-in-out;
+  margin-right: 2rem;
+  border-radius: 5px;
+  background: white;
+  cursor: pointer;
+
+  @media (max-width: 695px) {
+    width: 250px;
+  }
+
+  @media (max-width: 495px) {
+    width: 150px;
+  }
 `;
 
-interface Props {
+const StyledTextLink = styled(TextLinkTextSmall)`
+  align-self: center;
+  padding: 0 1rem;
+`;
+
+const Icons = styled.img`
+  width: 24px;
+  height: 24px;
+  align-self: center;
+  margin-right: 1rem;
+  cursor: pointer;
+  transition: 0.1s ease-in;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+`;
+
+type Props = {
+  locale: string;
   component: string;
-  transparentTop?: boolean;
-}
+};
 
-const HeaderComponent: React.FC<Props> = ({
-  component,
-  transparentTop,
-}: Props) => {
-  const [scrollState, setScrollState] = useState(transparentTop ? 'top' : 'nonTop');
-  let listener: any = null;
-
+const HeaderComponent: React.FC<Props> = ({ locale, component }: Props) => {
+  const [showBurger, setShowBurger] = useState<boolean>(false);
+  const navigationDataNodes: INavigationData = navigationQuery();
+  console.log(navigationQuery())
+  const navigationData: INavigation =
+    navigationDataNodes.nodes.find((node) => node.node_locale == locale) ||
+    navigationDataNodes.nodes[0];
   const width = useWindowWidth();
 
-  useEffect(() => {
-    if (!transparentTop) {
-      if (scrollState !== 'nonTop') {
-        setScrollState('nonTop');
-      }
-      return
-    }
-    else {
-      listener = document.addEventListener('scroll', e => {
-        var scrolled = document?.scrollingElement?.scrollTop;
-        if (scrolled && scrolled >= 80) {
-          if (scrollState !== 'nonTop') {
-            setScrollState('nonTop');
-          }
-        } else {
-          if (scrollState !== 'top') {
-            setScrollState('top');
-          }
-        }
-      });
-      return () => {
-        document.removeEventListener('scroll', listener);
-      };
-    }
-  }, [scrollState]);
-
-  const StyledLink = styled(Link)`
-    height: 100%;
-    padding: 0 1rem;
-    position: relative;
-    top: 10px;
-    color: #fff;
-    height: 35px;
-    top: 5px;
-    text-transform: uppercase;
-    align-self: center;
-    &:hover {
-      border-bottom: 3px solid white;
-      color: #fff;
-    }
-  `;
-
-const menu = (
-  <StyledMenu mode="horizontal">
-     <Menu.Item>
-     <StyledLink to="/">
-        {'Home'}
-      </StyledLink>
-    </Menu.Item>
-    <Menu.Item>
-      <StyledLink to="/services">Services</StyledLink>
-    </Menu.Item>
-    <Menu.Item>
-      <StyledLink to="/om">Om</StyledLink>
-    </Menu.Item>
-    <Menu.Item>
-      <StyledLink to="/kontakt">Kontakt</StyledLink>
-    </Menu.Item>
-  </StyledMenu>
-);
-
   return (
-    <div
-      style={{
-        transition: 'background-color 0.5s',
-        height: '80px',
-        position: 'fixed',
-        top: 0,
-        width: '100%',
-        zIndex: 50,
-        boxShadow:
-          scrollState && scrollState === 'top'
-          ? 'none'
-          : '0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12)',
-        background:
-          scrollState && scrollState === 'top'
-            ? 'rgba(255, 255, 255, 0) '
-            : '#274c77',
-      }}
-    >
+    <HeaderContainer>
+      <Burger
+        locale={locale}
+        isOpen={showBurger}
+        onClose={() => setShowBurger(!showBurger)}
+      />
       <InnerHeader>
-        <HeaderContent
-          onClick={() => navigate('/')}
-          style={{ cursor: 'pointer'}}
-        >
-          <Logo src="/logo.png" 
-            style={{
-              transform: scrollState && scrollState === 'top' ? `scale(${width > 700 ? '2.5' : '1.5'})` : 'scale(1)',
-              position: scrollState && scrollState === 'top' ?'absolute' : 'absolute',
-              top: scrollState && scrollState === 'top' ? 'calc(100vh / 4)' : '0',
-              filter: scrollState && scrollState === 'top' ? 'invert(0%)' : 'invert(100%)',
-              marginLeft: scrollState && scrollState === 'top' ? '15%' : 'initial' }}
-              
-              />
-        </HeaderContent>
-        {width > 700 && (
         <HeaderContent>
-          <StyledLink to="/services">Services</StyledLink>
-          <StyledLink to="/om">Om</StyledLink>
-          <StyledLink to="/kontakt">Kontakt</StyledLink>
-        </HeaderContent>
-        )}
-      {width < 700 && (
-        <HeaderContent>
-          <Dropdown
-              overlay={menu}
-              placement="bottomRight"
-              trigger={['click']}
+          <Logo
+            src={'/logo/HQ2.png'}
+            onClick={() => navigate('/')}
+            alt="UNQTech logo"
+            width={1608}
+            height={316}
+          />
+          {width > 1200 && (
+            <>
+              <StyledTextLink to={locale === 'da-DK' ? '/' : '/en'}>
+                {locale === 'da-DK' ? 'Forside' : 'Home'}
+              </StyledTextLink>
+              <StyledTextLink to={locale === 'da-DK' ? '/om' : '/en/about'}>
+                {locale === 'da-DK' ? 'Om' : 'About'}
+              </StyledTextLink>
+              <StyledTextLink
+                to={locale === 'da-DK' ? '/services' : '/en/services'}
               >
-              <StyledMenuIcon />
-            </Dropdown>
+                {'Services'}
+              </StyledTextLink>
+              <StyledTextLink to={locale === 'da-DK' ? '/blog' : '/en/blog'}>
+                {'Blog'}
+              </StyledTextLink>
+              <StyledTextLink
+                to={locale === 'da-DK' ? '/kontakt' : '/en/contact'}
+              >
+                {locale === 'da-DK' ? 'Kontakt' : 'Contact'}
+              </StyledTextLink>
+            </>
+          )}
         </HeaderContent>
-        )}
-        </InnerHeader>
-    </div>
+        <HeaderContent style={{ justifyContent: 'flex-end' }}>
+          <StyledLocaleImg
+            image={
+              locale != 'da-DK'
+                ? navigationData.daFlag.gatsbyImageData
+                : navigationData.enFlag.gatsbyImageData
+            }
+            alt={'locale selector'}
+            onClick={() =>
+              navigateTo(locale === 'da-DK' ? 'en-US' : 'da-DK', component)
+            }
+            imgStyle={{ objectFit: 'cover' }}
+          />
+          <Icons
+            src={showBurger ? '/icons/close.svg' : '/icons/menu.svg'}
+            onClick={() => setShowBurger(!showBurger)}
+            alt="Menu mansted wine"
+          />
+        </HeaderContent>
+      </InnerHeader>
+    </HeaderContainer>
   );
 };
 
 export default HeaderComponent;
+
+export const navigationQuery = () => {
+  const data = useStaticQuery(graphql`
+    query NavigationQuery {
+      allContentfulNavigation {
+        nodes {
+          backgroundColor
+          node_locale
+          title
+          logo {
+            gatsbyImageData(width: 500, placeholder: BLURRED)
+          }
+          enFlag {
+            gatsbyImageData(width: 100, placeholder: DOMINANT_COLOR, outputPixelDensities: 1.5)
+          }
+          daFlag {
+            gatsbyImageData(width: 100, placeholder: DOMINANT_COLOR, outputPixelDensities: 1.5)
+          }
+        }
+      }
+    }
+  `);
+  return data.allContentfulNavigation;
+};

@@ -5,7 +5,31 @@ const localizedUrls = JSON.parse(
   fs.readFileSync(path.join(__dirname, 'src', 'pages.json')),
 );
 
-exports.createPages = ({ actions }) => {
+exports.createPages = async ({ actions, graphql, reporter  }) => {
+  const blog = await graphql(`
+    {
+      allContentfulBlogPost {
+        nodes {
+          slugName
+        }
+      }
+    }
+  `)
+
+  if (blog.errors) {
+    reporter.panic("Error loading article", JSON.stringify(blog.errors))
+  }
+
+  blog.data.allContentfulBlogPost.nodes.forEach(post => {
+    actions.createPage({
+      path: `/blog/${post.slugName.toLowerCase()}/`,
+      component: require.resolve("./src/templates/blogpost.tsx"),
+      context: {
+        pagePath: post.slugName,
+      },
+    })
+  })
+  
   const { createPage } = actions;
   localizedUrls.map(lang => {
     lang.pages.map(page => {

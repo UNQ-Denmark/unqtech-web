@@ -1,5 +1,14 @@
 import styled from '@emotion/styled'
-import { theme } from '../theme'
+import { theme } from './theme'
+
+export const H1Ultra = styled.h1`
+    width: 100%;
+    font-weight: 400;
+    font-size: 96px;
+    line-height: 116px;
+    font-family: "Maax";
+    margin-bottom: 1rem;
+`
 
 export const H1Bold = styled.h1`
     width: 100%;
@@ -53,6 +62,7 @@ export const TextBlueGradientBold = styled.p`
     font-weight: bold;
     line-height: 24px;
     background: ${theme.colors.blueGradient};
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 `

@@ -1,4 +1,4 @@
-import {SiteLayout, StyledContent} from '../components/layout/layout';
+import {SiteContent, SiteLayout} from '../components/layout/layout';
 
 import { PageContext } from '../pageContext';
 import React from 'react';
@@ -16,8 +16,8 @@ const AboutPage: React.FC<Props> = ({ pageContext }: Props) => {
       componentName={pageContext.componentName}
     >
       <Seo title="Om"/>
-      <StyledContent>
-      </StyledContent>
+      <SiteContent>
+      </SiteContent>
     </SiteLayout>
   );
 };

@@ -13,16 +13,24 @@ const StyledCard = styled(Card)`
 margin: 1rem;
 `
 const Body = styled.div`
-  height: 200px;
+  height: fit-content;
 `
-const TextStyled = styled(TextSmall)`
+const TextStyled = styled.div`
     margin-bottom: 1rem;
     align-self: center;
     overflow : hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
+  
+  p {
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 24px;
+    color: ${theme.colors.greyLight.grey55};
+  }
+
 `
 type Props = {
   post: IBlogPostCard;
@@ -32,19 +40,19 @@ const BlogPostCard: React.FC<Props> = ({ post }: Props) => {
   return (
     <StyledCard
       hoverable
-      onClick={() => navigate(`/news/${post.slugName.toLowerCase().replace(/ /g,'-').replace(/[^\w-]+/g,'')}/`)}
+      onClick={() => navigate(`/blog/${post.slugName.toLowerCase().replace(/ /g,'-').replace(/[^\w-]+/g,'')}/`)}
       cover={
         <GatsbyImage
-        style={{height: '250px', objectFit: 'cover'}}
           alt={post.title}
           image={post.image.gatsbyImageData}
+          imgStyle={{objectFit: 'contain', padding: '0.5rem'}}
         />
       }
     >
       <Body>
           <TextBlueGradientBold>{post.type}</TextBlueGradientBold>
           <H3Bold>{post.title}</H3Bold>
-          <TextSmall>{`${post.date} - ${post.timeToRead}`}</TextSmall>
+          <TextSmall>{`${post.date}`}</TextSmall>
 
         <TextStyled style={{color: theme.colors.txtLight.black}}><ReactMarkdown>{post.intro.intro}</ReactMarkdown></TextStyled>
       </Body>

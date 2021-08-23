@@ -9,11 +9,11 @@ require('dotenv').config({
 
 module.exports = {
   siteMetadata: {
-    title: `HighView`,
-    titleTemplate: '%s · HighView ',
-    description: `HighView website`,
+    title: `UNQTech`,
+    titleTemplate: '%s · UNQTech ',
+    description: `UNQTech website`,
     author: `Andreas Soelberg Linkedin: https://www.linkedin.com/in/andreas-soelberg-61276115a/`,
-    siteUrl: 'https://www.HighView.dk', // No trailing slash allowed!
+    siteUrl: 'https://www.UNQTech.dk', // No trailing slash allowed!
     image: '', // Path to your image you placed in the 'static' folder
   },
   plugins: [
@@ -34,6 +34,9 @@ module.exports = {
     },
     `gatsby-plugin-typescript`,
     'gatsby-plugin-antd',
+    `gatsby-plugin-image`,
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
     {
       resolve: `gatsby-source-contentful`,
       options: {
@@ -44,16 +47,6 @@ module.exports = {
     `@contentful/gatsby-transformer-contentful-richtext`,
     'gatsby-plugin-sitemap',
     {
-      resolve: `gatsby-plugin-google-fonts`,
-      options: {
-        fonts: [
-          `Roboto`,
-          `source sans pro\:300,400,400i,700`, // you can also specify font weights and styles
-        ],
-        display: 'swap',
-      },
-    },
-    {
       resolve: `gatsby-plugin-netlify`,
       options: {
         mergeSecurityHeaders: true, // boolean to turn off the default security headers
@@ -63,12 +56,12 @@ module.exports = {
         generateMatchPathRewrites: true, // boolean to turn off automatic creation of redirect rules for client only paths
       },
     },
-    {
-      resolve: "gatsby-plugin-google-tagmanager",
-      options: {
-        id: process.env.GTM_ID,
-        includeInDevelopment: false,
-      },
-    },
+    // {
+    //   resolve: "gatsby-plugin-google-tagmanager",
+    //   options: {
+    //     id: process.env.GTM_ID,
+    //     includeInDevelopment: false,
+    //   },
+    // },
   ],
 };

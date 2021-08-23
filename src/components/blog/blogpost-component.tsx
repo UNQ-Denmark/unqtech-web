@@ -5,7 +5,7 @@ import { H1Bold, H2, H3, TextBlueGradientBold, TextBold, TextItalic, TextRegular
 import { GatsbyImage } from "gatsby-plugin-image";
 import { IBlogPost } from './blog.interface';
 import React from 'react';
-import { StyledContent } from '../layout/layout';
+import { SiteContent } from '../layout/layout';
 import { renderRichText } from 'gatsby-source-contentful/rich-text';
 import styled from '@emotion/styled';
 
@@ -89,14 +89,14 @@ const BlogPostComponent: React.FC<Props> = ({ article }: Props) => {
     },
   };
   return (
-  <StyledContent>
-        <Breadcrumb style={{padding: '1rem'}} separator=">">
+  <SiteContent>
+        <Breadcrumb style={{padding: '1rem'}}>
             <Breadcrumb.Item><a href="/">Home</a></Breadcrumb.Item>
             <Breadcrumb.Item>
-                <a href="/news">News</a>
+                <a href="/blog">Blog</a>
             </Breadcrumb.Item>
             <Breadcrumb.Item>
-                <a href={`/blogs/${article.slugName.toLowerCase().replace(/ /g,'-').replace(/[^\w-]+/g,'')}/`}>{article.slugName}</a>
+                {article.title}
             </Breadcrumb.Item>
         </Breadcrumb>
 
@@ -105,7 +105,7 @@ const BlogPostComponent: React.FC<Props> = ({ article }: Props) => {
             <H1Bold style={{ width: '100%', textAlign: 'center' }}>
             {article.title}
             </H1Bold>
-            <TextRegular style={{textAlign: 'center'}}>{`${article.date} - ${article.timeToRead} min read`}</TextRegular>
+            <TextRegular style={{textAlign: 'center'}}>{`${article.date}`}</TextRegular>
             <StyledImg image={article.image.gatsbyImageData} alt={article.title} />
             <BlogPostContentContainer>
             {article && article.content && renderRichText(article.content, options)}
@@ -122,6 +122,6 @@ const BlogPostComponent: React.FC<Props> = ({ article }: Props) => {
                 </Col>
             }
         </Row>
-    </StyledContent>)
+    </SiteContent>)
 };
 export default BlogPostComponent;

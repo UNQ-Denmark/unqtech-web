@@ -21,6 +21,14 @@ export interface IBlogPostCard {
     timeToRead: string
 }
 
+export interface IBlogPage {
+    title: string
+    keywords: string[]
+    image: {gatsbyImageData: IGatsbyImageData}
+    headline: {intro: string}
+    subHeading: {subHeading: string}
+}
+
 export interface IAuthor {
     name: string
     image: {gatsbyImageData: IGatsbyImageData}

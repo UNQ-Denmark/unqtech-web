@@ -1,22 +1,21 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from 'react';
 
-export const isBrowser = () => typeof window !== "undefined"
+import debounce from 'lodash/debounce';
+import { isBrowser } from './utils';
 
-const useWindowWidth = () => {
+function useWindowWidth(delay = 400) {
+  const [width, setWidth] = useState(window.innerWidth);
 
-    const [width, setWidth] = useState(isBrowser() ? window.innerWidth : 0)
-  
-    useEffect(() => {
-        if (!isBrowser()) return;
-  
-      const handleResize = () => setWidth(window.innerWidth);
-      window.addEventListener('resize', handleResize);
-      return () => {
-        window.removeEventListener('resize', handleResize)
-      };
-    });
-  
-    return width
-  }
+  useEffect(() => {
+    const handleResize = () => setWidth(window.innerWidth);
+    const debouncedHandleResize = debounce(handleResize, delay);
+    window.addEventListener('resize', debouncedHandleResize);
+    return () => {
+      window.removeEventListener('resize', debouncedHandleResize);
+    }
+  }, [delay]);
 
-export default useWindowWidth
+  return width;
+}
+
+export default useWindowWidth;
