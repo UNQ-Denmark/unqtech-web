@@ -7,10 +7,7 @@
                 "componentName": "404",
                 "slug": "/404"
             },
-            {
-                "componentName": "about",
-                "slug": "/om"
-            },
+
             {
                 "componentName": "contact",
                 "slug": "/kontakt"
@@ -20,12 +17,24 @@
                 "slug": "/"
             },
             {
+                "componentName": "blog",
+                "slug": "/blog"
+            },
+            {
                 "componentName": "services",
                 "slug": "/services"
             },
             {
-                "componentName": "blog",
-                "slug": "/blog"
+                "componentName": "website",
+                "slug": "/services/website"
+            },
+            {
+                "componentName": "webshop",
+                "slug": "/services/webshop"
+            },
+            {
+                "componentName": "hosting",
+                "slug": "/services/hosting"
             }
         ]
     },
@@ -38,10 +47,6 @@
                 "slug": "/404"
             },
             {
-                "componentName": "about",
-                "slug": "/about"
-            },
-            {
                 "componentName": "contact",
                 "slug": "/contact"
             },
@@ -50,12 +55,24 @@
                 "slug": "/"
             },
             {
+                "componentName": "blog",
+                "slug": "/blog"
+            },
+            {
                 "componentName": "services",
                 "slug": "/services"
             },
             {
-                "componentName": "blog",
-                "slug": "/blog"
+                "componentName": "website",
+                "slug": "/services/website"
+            },
+            {
+                "componentName": "webshop",
+                "slug": "/services/e-commerce"
+            },
+            {
+                "componentName": "hosting",
+                "slug": "/services/hosting"
             }
         ]
     }

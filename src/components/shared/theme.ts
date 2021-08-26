@@ -32,7 +32,22 @@ enum brandLight {
     extra = '#a3cef1',
     grey = '#8b8c89',
     heaven = "#0095F6",
-    heavenHover = "#2F74DD"
+    heavenHover = "#2F74DD",
+    lemon = '#fffacd'
+}
+
+enum gradients {
+    darkblue = 'linear-gradient(135deg, #000000 0%, #2c3e50 100%)',
+    darkblueBg = '#000000',
+    darkgrey = 'linear-gradient(135deg, #000000 0%, #7f8c8d 100%)',
+    darkgreyBg = '#000000',
+    dark = 'linear-gradient(135deg, #000000 0%, #414141 100%)',
+    darkBg = '#000000',
+    darkgreen = 'linear-gradient(135deg, #000000 0%, #166d3b85 100%)',
+    darkgreenBg = '#000000',
+    grey = 'linear-gradient(135deg, #2d3436 0%, #d3d3d3 100%)',
+    greyBg = '#2d3436',
+    blueGradient = "linear-gradient(85.79deg, #2F80ED 0%, #56CCF2 100%)"
 }
 
 const colors = {
@@ -41,7 +56,7 @@ const colors = {
     greyLight,
     rainbowLight,
     brandLight,
-    blueGradient: "linear-gradient(85.79deg, #2F80ED 0%, #56CCF2 100%)"
+    gradients
 }
 
 enum effects {

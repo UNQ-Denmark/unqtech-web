@@ -10,6 +10,7 @@
     "@emotion/styled": "^11.3.0",
     "@types/lodash.debounce": "^4.0.6",
     "@types/react-helmet": "^6.1.2",
+    "@types/three": "^0.124.0",
     "antd": "^4.16.13",
     "gatsby": "^3.12.0",
     "gatsby-image": "^3.11.0",
@@ -28,7 +29,10 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-helmet": "^6.1.0",
-    "react-markdown": "^6.0.2"
+    "react-markdown": "^6.0.2",
+    "three": "^0.124.0",
+    "typed.js": "^2.0.12",
+    "vanta": "^0.5.21"
   },
   "devDependencies": {
     "@types/node": "^16.7.1",

@@ -7,16 +7,15 @@ import Seo from '../components/shared/Seo';
 import { graphql } from 'gatsby';
 
 type Props = {
-  pageContext: PageContext
   data: { post: {nodes: any}}
 }
 
-const BlogPost: React.FC<Props> = ({ data: { post }, pageContext }: Props) => {
+const BlogPost: React.FC<Props> = ({ data: { post } }: Props) => {
 
   return (
     <SiteLayout
-      locale={pageContext.locale}
-      componentName={pageContext.componentName}
+      locale={'da-DK'}
+      componentName={'blog'}
     >
       <Seo 
         title="UNQ Kontakt" 

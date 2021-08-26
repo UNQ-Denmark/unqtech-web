@@ -23,6 +23,7 @@ const SiteLayout: React.FC<Props> = (props) => {
 
   const Wrapper = styled.div`
     width: 100%;
+    min-height: calc(100vh - 80px);
     margin-top: 80px;
   `;
 
@@ -52,12 +53,16 @@ const StyledContent = styled(Layout.Content)`
 
 type PropsContent = {
   background?: string;
+  backgrondImg?: string;
 };
 
 const SiteContent: React.FC<PropsContent> = (props) => {
   const Wrapper = styled.div`
     width: 100%;
-    background: ${props.background ? props.background : 'transparent'};
+    background-color: ${props.background ? props.background : 'transparent'};
+    background-image: ${props.backgrondImg ? props.backgrondImg : 'unset'};
+    z-index: 10;
+    position: relative;
   `;
 
   return <Wrapper><StyledContent>{props.children}</StyledContent></Wrapper>;

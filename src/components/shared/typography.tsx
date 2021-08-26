@@ -61,7 +61,7 @@ export const TextBlueGradientBold = styled.p`
     font-size: 16px;
     font-weight: bold;
     line-height: 24px;
-    background: ${theme.colors.blueGradient};
+    background: ${theme.colors.gradients.blueGradient};
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;

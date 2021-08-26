@@ -3,22 +3,13 @@ import React, { useState } from 'react';
 import { graphql, navigate, useStaticQuery } from 'gatsby';
 
 import Burger from './burger';
-import { GatsbyImage } from 'gatsby-plugin-image';
 import { TextLinkTextSmall } from '../shared/button';
 import navigateTo from '../shared/pathHandler';
 import styled from '@emotion/styled';
-import { theme } from '../shared/theme';
+import useScrollPosition from '../shared/useScrollPosition';
 import useWindowWidth from '../shared/useWindowSize';
-
-const HeaderContainer = styled.div`
-  top: 0px;
-  position: fixed;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  background: ${theme.colors.bgLight.white};
-  z-index: 999;
-`;
+import { theme } from '../shared/theme';
+import { Dropdown, Menu } from 'antd';
 
 const InnerHeader = styled.div`
   display: flex;
@@ -27,8 +18,6 @@ const InnerHeader = styled.div`
   padding: 0 15px;
   width: 100%;
   height: 100%;
-  background: ${theme.colors.bgLight.white};
-  border-bottom: 1px solid ${theme.colors.greyLight.grey10};
 `;
 
 const HeaderContent = styled.div`
@@ -38,22 +27,12 @@ const HeaderContent = styled.div`
   z-index: 50;
 `;
 
-const StyledLocaleImg = styled(GatsbyImage)`
-  margin: auto;
-  margin-right: 1.5rem;
-  cursor: pointer;
-  height: 1.5rem;
-  width: 1.5rem;
-  border-radius: 2rem;
-`;
-
 const Logo = styled.img`
   height: 40px;
   width: auto;
   align-self: center;
   margin-right: 2rem;
   border-radius: 5px;
-  background: white;
   cursor: pointer;
 
   @media (max-width: 695px) {
@@ -70,6 +49,50 @@ const StyledTextLink = styled(TextLinkTextSmall)`
   padding: 0 1rem;
 `;
 
+const DropDownLink = styled.p`
+  font-size: 14px;
+  font-weight: 300;
+  color: ${theme.colors.greyLight.grey55};
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  display: block;
+  align-self: center;
+  padding: 0 1rem;
+  &:hover {
+    color: ${theme.colors.greyLight.grey5};
+  }
+`
+
+const StyledDropDownLink = styled(TextLinkTextSmall)`
+  cursor: pointer;
+  transition: all 0.2s ease-in;
+  background-image: none;
+  background-position: center;
+  font-size: 20px;
+  padding-left: 1rem;
+
+  &:hover {
+    padding-right: 2.5rem;
+    background-image: url('/icons/arrow-right-dark.svg');
+    background-position: calc(100% - 1rem) center;
+    background-repeat: no-repeat;
+  }
+`;
+
+const LangLink = styled.p`
+  font-size: 20px;
+  transition: 0.2s ease-in;
+  cursor: pointer;
+  color: ${(props) =>
+    props['aria-current'] ? props['color'] : theme.colors.greyLight.grey55};
+  align-self: center;
+  margin-bottom: 0;
+
+  &:hover {
+    color: white;
+  }
+`;
+
 const Icons = styled.img`
   width: 24px;
   height: 24px;
@@ -83,6 +106,29 @@ const Icons = styled.img`
   }
 `;
 
+const ContactBtn = styled.button`
+  height: 50px;
+  border-radius: 25px;
+  background: #02ccff;
+  color: white;
+  padding: 0.5rem 1.5rem;
+  margin: 0 2rem;
+  align-self: center;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease-in;
+  background-image: none;
+  background-position: center;
+  font-size: 20px;
+
+  &:hover {
+    padding-right: 2.5rem;
+    background-image: url('/icons/arrow-right.svg');
+    background-position: calc(100% - 1rem) center;
+    background-repeat: no-repeat;
+  }
+`;
+
 type Props = {
   locale: string;
   component: string;
@@ -91,14 +137,54 @@ type Props = {
 const HeaderComponent: React.FC<Props> = ({ locale, component }: Props) => {
   const [showBurger, setShowBurger] = useState<boolean>(false);
   const navigationDataNodes: INavigationData = navigationQuery();
-  console.log(navigationQuery())
   const navigationData: INavigation =
     navigationDataNodes.nodes.find((node) => node.node_locale == locale) ||
     navigationDataNodes.nodes[0];
   const width = useWindowWidth();
+  const scrollPos = useScrollPosition();
+
+  const menu = (
+    <Menu >
+      <Menu.Item>
+        <StyledDropDownLink
+          to={
+            locale === 'da-DK' ? '/services/webshop' : '/en/services/e-commerce'
+          }
+        >
+          {locale === 'da-DK' ? 'Webshop' : 'E-commerce'}
+        </StyledDropDownLink>
+      </Menu.Item>
+      <Menu.Item>
+        <StyledDropDownLink
+          to={locale === 'da-DK' ? '/services/website' : '/en/services/website'}
+        >
+          {'Website'}
+        </StyledDropDownLink>
+      </Menu.Item>
+    </Menu>
+  );
 
   return (
-    <HeaderContainer>
+    <div
+      style={{
+        top: '0px',
+        position: 'fixed',
+        width: '100%',
+        display: 'flex',
+        justifyContent: 'center',
+        zIndex: 999,
+        background:
+          scrollPos > 1 || showBurger
+            ? 'white'
+            : 'transparent',
+        transition: 'all .3s',
+        borderBottom: '1px solid',
+        borderColor:
+          scrollPos > 1 || showBurger
+            ? 'white'
+            : 'transparent',
+      }}
+    >
       <Burger
         locale={locale}
         isOpen={showBurger}
@@ -107,57 +193,82 @@ const HeaderComponent: React.FC<Props> = ({ locale, component }: Props) => {
       <InnerHeader>
         <HeaderContent>
           <Logo
-            src={'/logo/HQ2.png'}
+            src={
+              scrollPos > 1 || showBurger
+                ? '/logo/HQ2.png'
+                : '/logo/HQ4.png'
+            }
             onClick={() => navigate('/')}
             alt="UNQTech logo"
             width={1608}
             height={316}
           />
+        </HeaderContent>
+        <HeaderContent style={{ justifyContent: 'flex-end' }}>
           {width > 1200 && (
             <>
-              <StyledTextLink to={locale === 'da-DK' ? '/' : '/en'}>
-                {locale === 'da-DK' ? 'Forside' : 'Home'}
-              </StyledTextLink>
-              <StyledTextLink to={locale === 'da-DK' ? '/om' : '/en/about'}>
-                {locale === 'da-DK' ? 'Om' : 'About'}
-              </StyledTextLink>
+              <Dropdown overlay={menu} placement="bottomCenter" arrow overlayStyle={{width: '200px'}}>
+                <DropDownLink>
+                  {locale === 'da-DK' ? 'Webudvikling' : 'Web Development'}
+                </DropDownLink>
+              </Dropdown>
               <StyledTextLink
-                to={locale === 'da-DK' ? '/services' : '/en/services'}
+                to={locale === 'da-DK' ? '/services/hosting' : '/en/services/hosting'}
               >
-                {'Services'}
+                {'Hosting'}
               </StyledTextLink>
               <StyledTextLink to={locale === 'da-DK' ? '/blog' : '/en/blog'}>
                 {'Blog'}
               </StyledTextLink>
-              <StyledTextLink
-                to={locale === 'da-DK' ? '/kontakt' : '/en/contact'}
-              >
-                {locale === 'da-DK' ? 'Kontakt' : 'Contact'}
-              </StyledTextLink>
             </>
           )}
-        </HeaderContent>
-        <HeaderContent style={{ justifyContent: 'flex-end' }}>
-          <StyledLocaleImg
-            image={
-              locale != 'da-DK'
-                ? navigationData.daFlag.gatsbyImageData
-                : navigationData.enFlag.gatsbyImageData
+          <ContactBtn onClick={() => navigateTo(locale, 'contact')}>
+            {locale === 'da-DK' ? 'Kontakt' : 'Contact'}
+          </ContactBtn>
+
+          <LangLink
+            color={
+              scrollPos > 1 || showBurger
+                ? 'black'
+                : 'white'
             }
-            alt={'locale selector'}
-            onClick={() =>
-              navigateTo(locale === 'da-DK' ? 'en-US' : 'da-DK', component)
+            aria-current={locale === 'da-DK'}
+            onClick={() => navigateTo('da-DK', component)}
+          >
+            DA
+          </LangLink>
+          <LangLink
+            color={
+              scrollPos > 1 || showBurger
+                ? 'black'
+                : 'white'
             }
-            imgStyle={{ objectFit: 'cover' }}
-          />
+            aria-current
+            style={{ margin: '0 .2rem' }}
+          >
+            {' / '}
+          </LangLink>
+          <LangLink
+            color={
+              scrollPos > 1 || showBurger
+                ? 'black'
+                : 'white'
+            }
+            aria-current={locale === 'en-US'}
+            onClick={() => navigateTo('en-US', component)}
+          >
+            EN
+          </LangLink>
+
           <Icons
             src={showBurger ? '/icons/close.svg' : '/icons/menu.svg'}
             onClick={() => setShowBurger(!showBurger)}
             alt="Menu mansted wine"
+            style={{ marginLeft: '2rem' }}
           />
         </HeaderContent>
       </InnerHeader>
-    </HeaderContainer>
+    </div>
   );
 };
 
@@ -175,10 +286,18 @@ export const navigationQuery = () => {
             gatsbyImageData(width: 500, placeholder: BLURRED)
           }
           enFlag {
-            gatsbyImageData(width: 100, placeholder: DOMINANT_COLOR, outputPixelDensities: 1.5)
+            gatsbyImageData(
+              width: 100
+              placeholder: DOMINANT_COLOR
+              outputPixelDensities: 1.5
+            )
           }
           daFlag {
-            gatsbyImageData(width: 100, placeholder: DOMINANT_COLOR, outputPixelDensities: 1.5)
+            gatsbyImageData(
+              width: 100
+              placeholder: DOMINANT_COLOR
+              outputPixelDensities: 1.5
+            )
           }
         }
       }
