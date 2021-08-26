@@ -9,7 +9,7 @@ import styled from '@emotion/styled';
 import useScrollPosition from '../shared/useScrollPosition';
 import useWindowWidth from '../shared/useWindowSize';
 import { theme } from '../shared/theme';
-import { Dropdown, Menu } from 'antd';
+import { Button, Dropdown, Menu } from 'antd';
 
 const InnerHeader = styled.div`
   display: flex;
@@ -49,17 +49,20 @@ const StyledTextLink = styled(TextLinkTextSmall)`
   padding: 0 1rem;
 `;
 
-const DropDownLink = styled.p`
+const DropDownLink = styled.button`
   font-size: 14px;
   font-weight: 300;
   color: ${theme.colors.greyLight.grey55};
+  background: transparent;
   margin-block-start: 1em;
   margin-block-end: 1em;
   display: block;
   align-self: center;
   padding: 0 1rem;
+  border: none;
   &:hover {
     color: ${theme.colors.greyLight.grey5};
+    background: transparent;
   }
 `
 
@@ -145,7 +148,7 @@ const HeaderComponent: React.FC<Props> = ({ locale, component }: Props) => {
 
   const menu = (
     <Menu >
-      <Menu.Item>
+      <Menu.Item key={1}>
         <StyledDropDownLink
           to={
             locale === 'da-DK' ? '/services/webshop' : '/en/services/e-commerce'
@@ -154,7 +157,7 @@ const HeaderComponent: React.FC<Props> = ({ locale, component }: Props) => {
           {locale === 'da-DK' ? 'Webshop' : 'E-commerce'}
         </StyledDropDownLink>
       </Menu.Item>
-      <Menu.Item>
+      <Menu.Item key={2}>
         <StyledDropDownLink
           to={locale === 'da-DK' ? '/services/website' : '/en/services/website'}
         >
