@@ -3,9 +3,9 @@ import {SiteContent, SiteLayout} from '../components/layout/layout';
 import { PageContext } from '../pageContext';
 import React from 'react';
 import Seo from '../components/shared/Seo';
-import { HeadContainer, HeadImage, SectionCol, SectionRow, Waves } from '../components/shared/page-components';
+import { HeadContainer, HeadImage, HeadTextContainer, SectionCol, SectionRow, Waves } from '../components/shared/page-components';
 import { Col } from 'antd';
-import { H3, TextRegular } from '../components/shared/typography';
+import { H1Ultra, H2Bold, H3, TextRegular } from '../components/shared/typography';
 import { theme } from '../components/shared/theme';
 
 interface Props {
@@ -22,6 +22,10 @@ const HostingPage: React.FC<Props> = ({ pageContext }: Props) => {
       <Seo title="Hosting, webhhoting, serverhosting"/>
       <HeadContainer>
         <HeadImage src='http://via.placeholder.com/1500x800'/>
+        <HeadTextContainer>
+          <H1Ultra>Hosting</H1Ultra>
+          <H2Bold>Hosting blablabla This is a statement This is a statement</H2Bold>
+        </HeadTextContainer>
       <Waves viewBox="0 0 500 150" preserveAspectRatio="none"><path d="M0.00,49.98 C149.99,150.00 350.85,-49.98 505.46,66.61 L500.00,150.00 L0.00,150.00 Z" style={{stroke: "none", fill: "#fff"}}></path></Waves>
         {/* <HeadImage image={content.headImage.gatsbyImageData} alt={content.title} /> */}
       </HeadContainer>

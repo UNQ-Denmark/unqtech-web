@@ -1,12 +1,27 @@
+import { keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
 import { Col, Row } from "antd";
+import { theme } from "./theme";
+
+export const SlideIn = keyframes`
+    from {
+        
+        opacity: .25;
+        line-height: 500px;
+    }
+    to {
+        
+        opacity: 1;
+        line-height: 40px;
+    }
+
+`
 
 export const HeadContainer = styled.div`
   width: 100%;
   height: 90vh;
   position: relative;
   margin-top: -80px;
-  /* border-radius: 50% / 0 0 250px 250px; */
   overflow: hidden;
   background: black;
   z-index: 2;
@@ -49,3 +64,25 @@ export const SectionCol = styled(Col)`
     font-size: 20px;
   }
 `
+
+export const HeadTextContainer = styled.div`
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  z-index: 5;
+  position: absolute;
+  top: 200px;
+  width: 100%;
+  padding: 2rem;
+    line-break: auto;
+    white-space: wrap;
+    h1 {
+      color: white;
+    }
+   h2 {
+     color: white;
+     max-width: 700px;
+     animation: ${SlideIn} 1s ease;
+   }
+`;
