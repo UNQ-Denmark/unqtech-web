@@ -9,7 +9,7 @@ import styled from '@emotion/styled';
 import useScrollPosition from '../shared/useScrollPosition';
 import useWindowWidth from '../shared/useWindowSize';
 import { theme } from '../shared/theme';
-import { Button, Dropdown, Menu } from 'antd';
+import { Dropdown, Menu } from 'antd';
 
 const InnerHeader = styled.div`
   display: flex;

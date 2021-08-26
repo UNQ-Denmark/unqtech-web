@@ -1,7 +1,7 @@
 import { keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
 import { Col, Row } from "antd";
-import { theme } from "./theme";
+import {GatsbyImage} from "gatsby-plugin-image";
 
 export const SlideIn = keyframes`
     from {
@@ -27,7 +27,7 @@ export const HeadContainer = styled.div`
   z-index: 2;
   `;
 
-export const HeadImage = styled.img`
+export const HeadImage = styled(GatsbyImage)`
   width: 100%;
   height: 90vh;
   position: fixed;
@@ -86,3 +86,9 @@ export const HeadTextContainer = styled.div`
      animation: ${SlideIn} 1s ease;
    }
 `;
+
+export const SectionImg = styled(GatsbyImage)`
+  height: 500px;
+  width: 650px;
+  border-radius: 5px;
+`

@@ -21,7 +21,7 @@ const WebSitePage: React.FC<Props> = ({ pageContext }: Props) => {
     >
       <Seo title="Hosting, webhhoting, serverhosting"/>
       <HeadContainer>
-        <HeadImage src='http://via.placeholder.com/1500x800'/>
+        {/* <HeadImage src='http://via.placeholder.com/1500x800'/> */}
         <HeadTextContainer>
           <H1Ultra>Websites</H1Ultra>
           <H2Bold>Hosting blablabla This is a statement This is a statement</H2Bold>
