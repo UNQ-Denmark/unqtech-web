@@ -2,23 +2,23 @@ import styled from '@emotion/styled'
 
 import React from 'react'
 import { LayeredImage } from "react-layered-image";
+import useWindowWidth from './useWindowSize';
 
 
 const Container = styled.div`
-    width: 650px;
-    height: auto;
+    width: 100%;
     position: relative;
     padding: 3rem;
 `
+const InnerContainer = styled.div`
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`
 const MultiLayerWoo: React.FC = () => {
-
-    // const layers = [
-    //     "/images/woocommerce-alene.png",
-    //     "/images/Gruppe-1.png",
-    //     "/images/Gruppe-2.png",
-    //     "/images/Gruppe-3.png",
-    //     "/images/Gruppe-4.png",
-    //   ];
+  const width = useWindowWidth();
 
     const layers = [
         "https://cdn.discordapp.com/attachments/806183928410406972/880562740807204864/woocommerce-alene.png",
@@ -31,9 +31,9 @@ const MultiLayerWoo: React.FC = () => {
 
     return (
         <Container>
-        {/* <div style={style}> */}
-        <LayeredImage shadowOpacity={0} borderRadius={0} layers={layers} lightOpacity={0.2} style={{ width: '600px'}} />
-      {/* </div> */}
+        <InnerContainer >
+        <LayeredImage alt="UNQTech Integrations" shadowOpacity={0} borderRadius={0} layers={layers} lightOpacity={0.2} style={{width: width > 760 ? '100%' : '100%', height: '500px'}} />
+      </InnerContainer>
       </Container>
     )
 }

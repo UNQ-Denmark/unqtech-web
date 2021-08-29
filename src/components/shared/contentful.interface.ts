@@ -9,6 +9,7 @@ export interface IWebShop {
   };
   keywords: string[];
   sections: ISection[];
+  features: ISection[];
   security: ISection;
   seoImage: {
     file: {

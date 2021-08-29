@@ -48,6 +48,9 @@ export const Waves = styled.svg`
 export const SectionRow = styled(Row)`
     width: 100%;
     padding: 5rem 0;
+    @media(max-width: 760px) {
+    padding-top: 0;
+  }
 `
 
 export const SectionCol = styled(Col)`
@@ -62,6 +65,9 @@ export const SectionCol = styled(Col)`
   }
   p {
     font-size: 20px;
+  }
+  @media(max-width: 760px) {
+    padding-top: 2rem;
   }
 `
 
@@ -85,10 +91,29 @@ export const HeadTextContainer = styled.div`
      max-width: 700px;
      animation: ${SlideIn} 1s ease;
    }
+
+   @media(max-width: 600px) {
+    h1 {
+      font-size: 35px;
+      line-height: 40px;
+    }
+   h2 {
+    font-size: 25px;
+    line-height: 30px;
+   }
+  }
 `;
 
 export const SectionImg = styled(GatsbyImage)`
   height: 500px;
-  width: 650px;
+  max-width: 650px;
+  width: 100%;
   border-radius: 5px;
+  padding: 1rem;
+
+  @media(max-width: 768px) {
+    padding: 0;
+    border-radius: 0px;
+    max-width: 770px;
+  }
 `
