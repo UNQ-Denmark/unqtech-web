@@ -49,14 +49,14 @@ const StyledTextLink = styled(TextLinkTextSmall)`
   padding: 0 1rem;
 `;
 
-const DropDownLink = styled.button`
+const DropDownBtn = styled.button`
+  display: block;
   font-size: 14px;
   font-weight: 300;
   color: ${theme.colors.greyLight.grey55};
   background: transparent;
   margin-block-start: 1em;
   margin-block-end: 1em;
-  display: block;
   align-self: center;
   padding: 0 1rem;
   border: none;
@@ -211,9 +211,9 @@ const HeaderComponent: React.FC<Props> = ({ locale, component }: Props) => {
           {width > 1200 && (
             <>
               <Dropdown overlay={menu} placement="bottomCenter" arrow overlayStyle={{width: '200px'}}>
-                <DropDownLink>
+                <DropDownBtn>
                   {locale === 'da-DK' ? 'Webudvikling' : 'Web Development'}
-                </DropDownLink>
+                </DropDownBtn>
               </Dropdown>
               <StyledTextLink
                 to={locale === 'da-DK' ? '/services/hosting' : '/en/services/hosting'}
