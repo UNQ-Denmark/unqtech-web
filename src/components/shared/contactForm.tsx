@@ -104,7 +104,7 @@ const ContactForm: React.FC<Props> = ({locale}: Props) => {
       body: encode({
         'form-name': form.getAttribute('name'),
         name: name,
-        contact: email,
+        email: email,
         message: msg,
       }),
     })
