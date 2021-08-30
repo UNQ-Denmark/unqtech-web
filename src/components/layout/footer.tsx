@@ -39,8 +39,8 @@ type Props = {
 const FooterComponent: React.FC<Props> = ({locale}: Props) => {
   return (
     <>
+      <ContactForm locale={locale} />
     <StyledFooter style={{background: theme.colors.bgLight.grey}}>
-      <ContactForm />
       <InnerFooter style={{background: theme.colors.bgLight.grey }}>
       <Row gutter={24} style={{ marginBottom: '3rem', background: theme.colors.bgLight.grey, width: '100%' }} justify='center' >
         <Col xs={20} sm={12} md={5}>

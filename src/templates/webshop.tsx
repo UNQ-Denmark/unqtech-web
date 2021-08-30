@@ -4,7 +4,7 @@ import { PageContext } from '../pageContext';
 import React from 'react';
 import Seo from '../components/shared/Seo';
 import { HeadContainer, HeadImage, HeadTextContainer, SectionCol, SectionImg, SectionRow, Waves } from '../components/shared/page-components';
-import { Col } from 'antd';
+import { Col, Divider } from 'antd';
 import { H1Bold, H2, H3, TextRegularMarkdown } from '../components/shared/typography';
 import { theme } from '../components/shared/theme';
 import { graphql } from 'gatsby';

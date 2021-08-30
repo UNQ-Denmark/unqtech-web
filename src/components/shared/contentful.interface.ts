@@ -31,3 +31,17 @@ export interface ISection {
     description: string;
   };
 }
+
+export interface IContactForm {
+  title: string
+  successMsg: string
+  errorMsg: string
+  namePh: string
+  emailPh: string
+  msgPh: string
+  contactBtn: string
+  image: {
+    gatsbyImageData: IGatsbyImageData;
+  }
+  node_locale: string
+}

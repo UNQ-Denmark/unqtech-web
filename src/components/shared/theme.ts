@@ -27,7 +27,7 @@ enum rainbowLight {
 
 enum brandLight {
     primary = '#274c77',
-    secoundary = '#6096ba',
+    secoundary = '#2ec4b6',
     bg = '#e7ecef',
     extra = '#a3cef1',
     grey = '#8b8c89',
