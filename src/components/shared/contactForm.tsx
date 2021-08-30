@@ -139,9 +139,9 @@ const ContactForm: React.FC<Props> = ({locale}: Props) => {
               onSubmit={handleSubmit}
               >
         <H2Bold style={{color: 'white', marginLeft: '1rem'}}>{contactForm.title}</H2Bold>
-          {success && <H3Bold>{contactForm.successMsg}</H3Bold>}
+          {success && <H3Bold style={{color: 'white', marginLeft: '1rem'}}>{contactForm.successMsg}</H3Bold>}
           {isError && (
-            <H3Bold>
+            <H3Bold style={{color: 'white', marginLeft: '1rem'}}>
               {contactForm.errorMsg}
             </H3Bold>
           )}
