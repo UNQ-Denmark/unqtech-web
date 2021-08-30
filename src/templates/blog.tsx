@@ -28,9 +28,11 @@ const HeadTextContainer = styled.div`
   padding: 2rem;
     line-break: auto;
     white-space: wrap;
-    
+    h1 {
+      color: ${theme.colors.txtLight.white};
+    }
     h2 {
-        color: ${theme.colors.greyLight.grey55};
+        color: ${theme.colors.txtLight.white};
     }
 `;
 
@@ -50,9 +52,9 @@ const CasesPage: React.FC<Props> = ({ pageContext, data }: Props) => {
       locale={pageContext.locale}
       componentName={pageContext.componentName}
     >
-      <Seo title="UNQ Kontakt" />
+      <Seo title={data.allContentfulBlogPage.nodes[0].title} image={data.allContentfulBlogPage.nodes[0].seoImage.file.url} keywords={data.allContentfulBlogPage.nodes[0].keywords} />
       <HeadContainer>
-        <HeadImage src="http://via.placeholder.com/1500x800" />
+        <HeadImage image={data.allContentfulBlogPage.nodes[0].seoImage.gatsbyImageData} alt={data.allContentfulBlogPage.nodes[0].title} />
         <HeadTextContainer>
           <H1Ultra>{data.allContentfulBlogPage.nodes[0].title}</H1Ultra>
           <H2>
@@ -101,7 +103,10 @@ export const BlogQuery = graphql`
         title
         keywords
         seoImage {
-          gatsbyImageData(width: 400, placeholder: BLURRED)
+          gatsbyImageData(width: 1600, placeholder: BLURRED)
+          file {
+            url
+          }
         }
         headline
         subHeading {

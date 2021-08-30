@@ -24,7 +24,12 @@ export interface IBlogPostCard {
 export interface IBlogPage {
     title: string
     keywords: string[]
-    image: {gatsbyImageData: IGatsbyImageData}
+    seoImage: {
+        gatsbyImageData: IGatsbyImageData
+        file: {
+            url: string
+          }
+        }
     headline: {intro: string}
     subHeading: {subHeading: string}
 }

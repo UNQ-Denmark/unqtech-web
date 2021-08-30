@@ -208,7 +208,7 @@ const HeaderComponent: React.FC<Props> = ({ locale, component }: Props) => {
           />
         </HeaderContent>
         <HeaderContent style={{ justifyContent: 'flex-end' }}>
-          {width > 1200 && (
+          {width > 900 && (
             <>
               <Dropdown overlay={menu} placement="bottomCenter" arrow overlayStyle={{width: '200px'}}>
                 <DropDownBtn>
@@ -223,8 +223,6 @@ const HeaderComponent: React.FC<Props> = ({ locale, component }: Props) => {
               <StyledTextLink to={locale === 'da-DK' ? '/blog' : '/en/blog'}>
                 {'Blog'}
               </StyledTextLink>
-            </>
-          )}
           <ContactBtn onClick={() => navigateTo(locale, 'contact')}>
             {locale === 'da-DK' ? 'Kontakt' : 'Contact'}
           </ContactBtn>
@@ -262,6 +260,8 @@ const HeaderComponent: React.FC<Props> = ({ locale, component }: Props) => {
           >
             EN
           </LangLink>
+            </>
+          )}
 
           <Icons
             src={showBurger ? '/icons/close.svg' : '/icons/menu.svg'}

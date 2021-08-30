@@ -6,6 +6,7 @@ import { navigate } from 'gatsby';
 import navigateTo from '../shared/pathHandler';
 import styled from '@emotion/styled';
 import { theme } from '../shared/theme';
+import ContactForm from '../shared/contactForm';
 
 const StyledFooter = styled(Layout.Footer)`
   background: ${theme.colors.greyLight.grey5};
@@ -39,6 +40,7 @@ const FooterComponent: React.FC<Props> = ({locale}: Props) => {
   return (
     <>
     <StyledFooter style={{background: theme.colors.bgLight.grey}}>
+      <ContactForm />
       <InnerFooter style={{background: theme.colors.bgLight.grey }}>
       <Row gutter={24} style={{ marginBottom: '3rem', background: theme.colors.bgLight.grey, width: '100%' }} justify='center' >
         <Col xs={20} sm={12} md={5}>
