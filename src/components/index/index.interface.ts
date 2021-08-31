@@ -1,9 +1,15 @@
 import { IGatsbyImageData } from "gatsby-plugin-image";
+import { ISection } from "../shared/contentful.interface";
 
 export interface IHomePage {
     title: string
     keywords: string[]
-    image: {gatsbyImageData: IGatsbyImageData}
+    seoImage: {file: {
+        url: string
+      }
+    }
     headlineAnimationList: string[]
-    headImage: {gatsbyImageData: IGatsbyImageData}
+    refImage: [{gatsbyImageData: IGatsbyImageData, title: string, description: string}]
+    sections: ISection[];
+    features: ISection[];
 }

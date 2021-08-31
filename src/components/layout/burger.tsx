@@ -1,8 +1,5 @@
-import { Col, Divider, Row } from 'antd'
-import { H1Bold, H2Bold } from '../shared/typography'
-
 import { Link } from 'gatsby'
-import React from 'react'
+import React, { RefObject } from 'react'
 import styled from '@emotion/styled'
 import { theme } from '../shared/theme'
 
@@ -10,6 +7,7 @@ type Props = {
     isOpen: boolean
     onClose: () => void
     locale: string
+    contactRef: RefObject<HTMLDivElement>
 }
 
 const Burger: React.FC<Props> = (props: Props) => {
@@ -58,17 +56,23 @@ const Burger: React.FC<Props> = (props: Props) => {
             text-decoration-color:  black;
         }
     `
+  const executeScroll = () => {
+      props.contactRef.current && props.contactRef.current.scrollIntoView({behavior: 'smooth', block: 'start'})
+      props.onClose()
+    }    
 
 
     return (
         <Container>
            <>
             <Link to={props.locale === 'da-DK' ? '/' : '/en'} onClick={() => props.onClose()}><StyledHead>{props.locale === 'da-DK' ? 'Forside' : 'Home'}</StyledHead></Link>
-            <Link to={props.locale === 'da-DK' ? '/om' : '/en/about'} onClick={() => props.onClose()}><StyledHead>{props.locale === 'da-DK' ? 'Om' : 'About'}</StyledHead></Link>
-            <Link to={props.locale === 'da-DK' ? '/services' : '/en/services'} onClick={() => props.onClose()}><StyledHead>{'Services'}</StyledHead></Link>
+            <Link to={props.locale === 'da-DK' ? '/services/webshop' : '/en/services/e-commerce'} onClick={() => props.onClose()}><StyledHead>{props.locale === 'da-DK' ? 'Webshop' : 'E-commerce'}</StyledHead></Link>
+            <Link to={props.locale === 'da-DK' ? '/services/website' : '/en/services/website'} onClick={() => props.onClose()}><StyledHead>{'Website'}</StyledHead></Link>
+            <Link to={props.locale === 'da-DK' ? '/services/hosting' : '/en/services/hosting'} onClick={() => props.onClose()}><StyledHead>{'Hosting'}</StyledHead></Link>
             <Link to={props.locale === 'da-DK' ? '/blog' : '/en/blog'} onClick={() => props.onClose()}><StyledHead>Blog</StyledHead></Link>
-            <Link to={props.locale === 'da-DK' ? '/kontakt' : '/en/contact'} onClick={() => props.onClose()}><StyledHead>{props.locale === 'da-DK' ? 'Kontakt' : 'Contact'}</StyledHead></Link>
-            <Link to={props.locale === 'da-DK' ? '/faq' : '/en/faq'} onClick={() => props.onClose()}><StyledHead>{props.locale === 'da-DK' ? 'Faq' : 'Faq'}</StyledHead></Link>
+            <StyledHead onClick={() => executeScroll()}>
+            {props.locale === 'da-DK' ? 'Kontakt' : 'Contact'}
+            </StyledHead>
             </>
         </Container>
     )

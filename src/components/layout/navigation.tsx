@@ -1,5 +1,5 @@
 import { INavigation, INavigationData } from './layout.interface';
-import React, { useState } from 'react';
+import React, { RefObject, useState } from 'react';
 import { graphql, navigate, useStaticQuery } from 'gatsby';
 
 import Burger from './burger';
@@ -109,7 +109,7 @@ const Icons = styled.img`
   }
 `;
 
-const ContactBtn = styled.button`
+export const ContactBtn = styled.button`
   height: 50px;
   border-radius: 25px;
   background: #02ccff;
@@ -135,9 +135,10 @@ const ContactBtn = styled.button`
 type Props = {
   locale: string;
   component: string;
+  contactRef: RefObject<HTMLDivElement>
 };
 
-const HeaderComponent: React.FC<Props> = ({ locale, component }: Props) => {
+const HeaderComponent: React.FC<Props> = ({ locale, component, contactRef }: Props) => {
   const [showBurger, setShowBurger] = useState<boolean>(false);
   const navigationDataNodes: INavigationData = navigationQuery();
   const navigationData: INavigation =
@@ -145,6 +146,8 @@ const HeaderComponent: React.FC<Props> = ({ locale, component }: Props) => {
     navigationDataNodes.nodes[0];
   const width = useWindowWidth();
   const scrollPos = useScrollPosition();
+
+  const executeScroll = () => contactRef.current && contactRef.current.scrollIntoView({behavior: 'smooth', block: 'start'})    
 
   const menu = (
     <Menu >
@@ -192,6 +195,7 @@ const HeaderComponent: React.FC<Props> = ({ locale, component }: Props) => {
         locale={locale}
         isOpen={showBurger}
         onClose={() => setShowBurger(!showBurger)}
+        contactRef={contactRef}
       />
       <InnerHeader>
         <HeaderContent>
@@ -223,7 +227,7 @@ const HeaderComponent: React.FC<Props> = ({ locale, component }: Props) => {
               <StyledTextLink to={locale === 'da-DK' ? '/blog' : '/en/blog'}>
                 {'Blog'}
               </StyledTextLink>
-          <ContactBtn onClick={() => navigateTo(locale, 'contact')}>
+          <ContactBtn onClick={executeScroll}>
             {locale === 'da-DK' ? 'Kontakt' : 'Contact'}
           </ContactBtn>
 

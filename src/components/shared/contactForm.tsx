@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { graphql, useStaticQuery } from 'gatsby';
 import { GatsbyImage } from 'gatsby-plugin-image';
-import React from 'react';
+import React, { MutableRefObject } from 'react';
 import { useState } from 'react';
 import { BtnBlack } from './button';
 import { IContactForm } from './contentful.interface';
@@ -70,9 +70,10 @@ const StyledForm = styled.form`
 
 type Props = {
     locale: string
-}
+    contactRef: MutableRefObject<any>
+  }
 
-const ContactForm: React.FC<Props> = ({locale}: Props) => {
+const ContactForm: React.FC<Props> = ({locale, contactRef}: Props) => {
   const [isLoading, setIsLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -122,7 +123,7 @@ const ContactForm: React.FC<Props> = ({locale}: Props) => {
       });
   };
   return (
-    <HeadContainer>
+    <HeadContainer ref={contactRef}>
     <HeadImage image={contactForm.image.gatsbyImageData} alt={contactForm.title} />
     <WavesBot xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
     <path fill={theme.colors.bgLight.grey} fillOpacity="1" d="M0,256L80,261.3C160,267,320,277,480,282.7C640,288,800,288,960,272C1120,256,1280,224,1360,208L1440,192L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path>

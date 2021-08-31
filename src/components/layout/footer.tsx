@@ -1,8 +1,7 @@
 import { Col, Layout, Row } from 'antd';
 import { TextSmallBold, TextXsmall, TextXsmallBold } from '../shared/typography';
 
-import React from 'react';
-import { navigate } from 'gatsby';
+import React, { RefObject } from 'react';
 import navigateTo from '../shared/pathHandler';
 import styled from '@emotion/styled';
 import { theme } from '../shared/theme';
@@ -34,12 +33,13 @@ const TextLink = styled(TextXsmallBold)`
 
 type Props = {
   locale: string
+  contactRef: RefObject<HTMLDivElement>
 }
 
-const FooterComponent: React.FC<Props> = ({locale}: Props) => {
+const FooterComponent: React.FC<Props> = ({locale, contactRef}: Props) => {
   return (
     <>
-      <ContactForm locale={locale} />
+    <ContactForm contactRef={contactRef} locale={locale} />
     <StyledFooter style={{background: theme.colors.bgLight.grey}}>
       <InnerFooter style={{background: theme.colors.bgLight.grey }}>
       <Row gutter={24} style={{ marginBottom: '3rem', background: theme.colors.bgLight.grey, width: '100%' }} justify='center' >

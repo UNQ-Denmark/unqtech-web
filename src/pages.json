@@ -7,11 +7,6 @@
                 "componentName": "404",
                 "slug": "/404"
             },
-
-            {
-                "componentName": "contact",
-                "slug": "/kontakt"
-            },
             {
                 "componentName": "index",
                 "slug": "/"
@@ -19,10 +14,6 @@
             {
                 "componentName": "blog",
                 "slug": "/blog"
-            },
-            {
-                "componentName": "services",
-                "slug": "/services"
             },
             {
                 "componentName": "website",
@@ -47,20 +38,12 @@
                 "slug": "/404"
             },
             {
-                "componentName": "contact",
-                "slug": "/contact"
-            },
-            {
                 "componentName": "index",
                 "slug": "/"
             },
             {
                 "componentName": "blog",
                 "slug": "/blog"
-            },
-            {
-                "componentName": "services",
-                "slug": "/services"
             },
             {
                 "componentName": "website",

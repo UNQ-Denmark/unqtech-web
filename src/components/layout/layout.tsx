@@ -1,7 +1,7 @@
 import FooterComponent from './footer';
 import HeaderComponent from './navigation';
 import { Layout } from 'antd';
-import React from 'react';
+import React, { useRef } from 'react';
 import styled from '@emotion/styled';
 
 type Props = {
@@ -10,6 +10,8 @@ type Props = {
 };
 
 const SiteLayout: React.FC<Props> = (props) => {
+  const contactRef = useRef<HTMLDivElement>(null)
+
   const StyledLayout = styled(Layout)`
     overflow-x: hidden;
     background: white;
@@ -29,10 +31,10 @@ const SiteLayout: React.FC<Props> = (props) => {
 
   return (
     <StyledLayout>
-      <HeaderComponent locale={props.locale} component={props.componentName} />
+      <HeaderComponent contactRef={contactRef} locale={props.locale} component={props.componentName} />
       <Wrapper>{props.children}</Wrapper>
 
-      <FooterComponent locale={props.locale} />
+      <FooterComponent contactRef={contactRef} locale={props.locale} />
     </StyledLayout>
   );
 };

@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 
-import { H1, H1Ultra, H2 } from '../shared/typography';
+import { H1, H1Ultra, H3, TextRegularMarkdown } from '../shared/typography';
 import React, { useEffect, useRef, useState } from 'react';
 
 import { GatsbyImage } from 'gatsby-plugin-image';
@@ -12,6 +12,10 @@ import Typed from 'typed.js';
 import WAVES from 'vanta/dist/vanta.waves.min.js';
 import styled from '@emotion/styled';
 import { theme } from '../shared/theme';
+import { SectionCol, SectionImg, SectionRow } from '../shared/page-components';
+import ReactMarkdown from 'react-markdown';
+import { Col } from 'antd';
+import FeatureItem from '../shared/feature';
 
 
 
@@ -58,9 +62,9 @@ position: absolute;
 bottom: 350px;
 `
 
-const RefLogo = styled.img`
+const RefLogo = styled(GatsbyImage)`
   max-height: 50px;
-  max-width: 250px;
+  max-width: 200px;
   margin: 0 1rem;
   width: auto;
   height: auto;
@@ -146,9 +150,9 @@ const IndexPage: React.FC<Props> = ({ content, locale }: Props) => {
     };
   }, []);
 
-  const DesignLink = <StyledLink to={locale === 'da-DK' ? '/services' : '/en/services'}>{locale === 'da-DK' ? 'Designer' : 'Design'}</StyledLink>
-  const DevelopLink = <StyledLink to={locale === 'da-DK' ? '/services' : '/en/services'}>{locale === 'da-DK' ? 'Udvikler' : 'Develope'}</StyledLink>
-  const MaintainLink = <StyledLink to={locale === 'da-DK' ? '/services' : '/en/services'}>{locale === 'da-DK' ? 'Vedligeholder' : 'Maintain'}</StyledLink>
+  const DesignLink = <StyledLink to={locale === 'da-DK' ? '/services/webshop' : '/en/services/e-commerce'}>{locale === 'da-DK' ? 'Designer' : 'Design'}</StyledLink>
+  const DevelopLink = <StyledLink to={locale === 'da-DK' ? '/services/website' : '/en/services/website'}>{locale === 'da-DK' ? 'Udvikler' : 'Develope'}</StyledLink>
+  const MaintainLink = <StyledLink to={locale === 'da-DK' ? '/services/hosting' : '/en/services/hosting'}>{locale === 'da-DK' ? 'Vedligeholder' : 'Maintain'}</StyledLink>
   const final = locale === 'da-DK' ? 'Websites og Webshops' : 'Websites and eCommerce stores'
 
   return (
@@ -172,15 +176,52 @@ const IndexPage: React.FC<Props> = ({ content, locale }: Props) => {
           <H1 style={{color: 'white', maxWidth: '600px', marginTop: '80px', wordBreak: 'keep-all'}}>{locale === 'da-DK' ? 'Vi' : 'We'} {DesignLink}, {DevelopLink} { locale === 'da-DK' ? 'og' : 'and'} {MaintainLink} {final}</H1>
         </AnnimatedHead>
         <ReferenceContainer>
-          <RefLogo src="/logo/ex/pct.png" onClick={() => window.open('https://privatcoronatest.dk/', '_blank')?.focus()} />
-          <RefLogo src="/logo/ex/udespa.png" onClick={() => window.open('https://udespa.dk/', '_blank')?.focus()} />
-          <RefLogo src="/logo/ex/richberry.png" onClick={() => window.open('https://richberry.ph/', '_blank')?.focus()} />
-          <RefLogo src="/logo/ex/wp.png" onClick={() => window.open('https://wagyupusher.dk/', '_blank')?.focus()} />
-
+          {content.refImage.length > 0 && content.refImage.map(img => (
+            <RefLogo objectFit={'contain'} image={img.gatsbyImageData} alt={img.title} onClick={() => window.open(img.description, '_blank')?.focus()} />
+          ))}
         </ReferenceContainer>
       </HeadContainer>
-      <SiteContent>
-        
+      <SiteContent background={'white'}>
+        <SectionRow style={{paddingTop: '0'}}>
+          <SectionCol xs={{span: 24, order: 2}} md={{span: 12, order: 2}}>
+            <H3>{content.sections[0].title}</H3>
+            <TextRegularMarkdown><ReactMarkdown>{content.sections[0].description.description}</ReactMarkdown></TextRegularMarkdown>
+          </SectionCol>
+          <Col xs={{span: 24, order: 1}} md={{span: 12, order: 1}}>
+            <SectionImg imgStyle={{objectFit: 'contain'}} image={content.sections[0].image.gatsbyImageData} alt={content.sections[0].image.title} />
+          </Col>
+        </SectionRow>
+      </SiteContent>
+      <SiteContent background={theme.colors.gradients.darkblueBg} backgrondImg={theme.colors.gradients.darkblue}>
+        <SectionRow>
+          <SectionCol xs={{span: 24, order: 2}} md={{span: 12, order: 1}}>
+            <H3 style={{color: 'white'}}>{content.sections[1].title}</H3>
+            <TextRegularMarkdown style={{color: 'white'}}><ReactMarkdown>{content.sections[1].description.description}</ReactMarkdown></TextRegularMarkdown>
+          </SectionCol>
+          <Col xs={{span: 24, order: 1}} md={{span: 12, order: 2}}>
+            <SectionImg image={content.sections[1].image.gatsbyImageData} alt={content.sections[1].image.title} />
+          </Col>
+        </SectionRow>
+      </SiteContent>
+      <SiteContent background={'white'}>
+        <SectionRow>
+          <SectionCol xs={{span: 24, order: 2}} md={{span: 12, order: 2}}>
+            <H3>{content.sections[2].title}</H3>
+            <TextRegularMarkdown><ReactMarkdown>{content.sections[2].description.description}</ReactMarkdown></TextRegularMarkdown>
+          </SectionCol>
+          <Col xs={{span: 24, order: 1}} md={{span: 12, order: 1}}>
+            <SectionImg imgStyle={{objectFit: 'contain'}} image={content.sections[2].image.gatsbyImageData} alt={content.sections[2].image.title} />
+          </Col>
+        </SectionRow>
+      </SiteContent>
+      <SiteContent background={'white'}>
+       <SectionRow>
+       {content.features && content.features.length > 0 && content.features.map(f => (
+         <Col key={f.title} xs={24} sm={12} md={8}>
+           <FeatureItem feature={f} />
+         </Col>
+       ))}
+       </SectionRow>
       </SiteContent>
     </div>
   );

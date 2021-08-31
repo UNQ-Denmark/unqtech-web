@@ -22,6 +22,8 @@ const Index: React.FC<Props> = ({ pageContext, data }: Props) => {
       <Seo
         title="Webudvikling, design, integration"
         pathname="/"
+        image={data.allContentfulHomePage.nodes[0].seoImage.file.url}
+        lang={pageContext.locale}
       />
         <IndexPage locale={pageContext.locale} content={data.allContentfulHomePage.nodes[0]} />
     </SiteLayout>
@@ -36,12 +38,36 @@ query HomePageQuery($locale: String) {
        title
         keywords
         seoImage {
-          gatsbyImageData(width: 400, placeholder: BLURRED)
+            file {
+            url
+          }
         }
         headlineAnimationList
-        headImage {
-          gatsbyImageData(width: 1400, placeholder: BLURRED)
+        refImage {
+          title
+          description
+          gatsbyImageData(width: 400, quality: 100, placeholder: BLURRED)
         }
+        sections {
+        title
+        image {
+          title
+          gatsbyImageData(width: 700, quality: 100, placeholder: BLURRED)
+        }
+        description {
+          description
+        }
+      }
+      features {
+        title
+        image {
+          title
+          gatsbyImageData(width: 300, quality: 100, placeholder: BLURRED)
+        }
+        description {
+          description
+        }
+      }
     }
   }
 }
