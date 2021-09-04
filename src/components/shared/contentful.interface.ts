@@ -45,3 +45,43 @@ export interface IContactForm {
   }
   node_locale: string
 }
+
+export interface IWebSite {
+  title: string;
+  headline: string;
+  subHeadline: string;
+  headImage: {
+    gatsbyImageData: IGatsbyImageData;
+  };
+  keywords: string[];
+  sections: ISection[];
+  features: ISection[];
+  seoImage: {
+    file: {
+      url: string;
+    };
+  };
+  seoDescription: {
+    seoDescription: string;
+  };
+}
+
+export interface IHostingPage {
+  title: string;
+  headline: string;
+  subHeadline: string;
+  headImage: {
+    gatsbyImageData: IGatsbyImageData;
+  };
+  keywords: string[];
+  sections: ISection[];
+  features: ISection[];
+  seoImage: {
+    file: {
+      url: string;
+    };
+  };
+  seoDescription: {
+    seoDescription: string;
+  };
+}
