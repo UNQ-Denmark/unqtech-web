@@ -159,7 +159,6 @@ const IndexPage: React.FC<Props> = ({ content, locale }: Props) => {
     <div>
       <HeadContainer ref={headRef}>
       <Waves viewBox="0 0 500 150" preserveAspectRatio="none"><path d="M0.00,49.98 C149.99,150.00 350.85,-49.98 505.46,66.61 L500.00,150.00 L0.00,150.00 Z" style={{stroke: "none", fill: "#fff"}}></path></Waves>
-        {/* <HeadImage image={content.headImage.gatsbyImageData} alt={content.title} /> */}
         <AnnimatedHead>
           <H1Ultra
             style={{

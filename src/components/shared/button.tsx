@@ -64,10 +64,10 @@ export const BtnGrey = styled(BtnBase)`
 `;
 
 export const BtnBlue = styled(BtnBase)`
-  background: ${theme.colors.brandLight.heaven};
+  background: ${theme.colors.brandLight.secoundary};
   color: ${theme.colors.txtLight.white};
   &:hover:enabled {
-    background: ${theme.colors.brandLight.heavenHover};
+    background: #46dccdbe;
   }
 `;
 

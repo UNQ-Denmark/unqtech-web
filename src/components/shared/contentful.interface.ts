@@ -30,6 +30,8 @@ export interface ISection {
   description: {
     description: string;
   };
+  hasBtn?: boolean
+  btnLink?: string
 }
 
 export interface IContactForm {
