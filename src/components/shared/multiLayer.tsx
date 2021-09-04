@@ -21,11 +21,12 @@ const MultiLayerWoo: React.FC = () => {
   const width = useWindowWidth();
 
     const layers = [
-        "https://cdn.discordapp.com/attachments/806183928410406972/880562740807204864/woocommerce-alene.png",
+        "https://cdn.discordapp.com/attachments/832326372596121660/883636197119914034/woocommerce-alene.png",
         "https://cdn.discordapp.com/attachments/806183928410406972/880563130680356905/gruppe-1.png",
         "https://cdn.discordapp.com/attachments/806183928410406972/880563385043931207/Gruppe2.png",
         "https://cdn.discordapp.com/attachments/806183928410406972/880564046879932416/Gruppe-3.png",
         "https://cdn.discordapp.com/attachments/806183928410406972/880564291915378698/Gruppe-4.png",
+        "https://cdn.discordapp.com/attachments/832326372596121660/882520344735383552/Woo.png"
       ];
 
 

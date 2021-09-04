@@ -13,7 +13,7 @@ const HeadContainer = styled.div`
   width: 100%;
   position: relative;
   z-index: 20;
-  height: 600px;
+  height: 630px;
 `;
 
 const HeadImage = styled(GatsbyImage)`
@@ -27,7 +27,7 @@ const HeadImage = styled(GatsbyImage)`
 const WavesBot = styled.svg`
   position: absolute;
   bottom: 0;
-  height: 150px;
+  height: 130px;
   width: 100%;
   z-index: 10;
 `
