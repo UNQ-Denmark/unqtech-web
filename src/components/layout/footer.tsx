@@ -63,7 +63,7 @@ const FooterComponent: React.FC<Props> = ({locale, contactRef}: Props) => {
         <Col xs={20} sm={12} md={5}>
           <TextSmallBold>HJÆLP</TextSmallBold>
           {/* <TextLink>My Account</TextLink> */}
-          <TextLink onClick={() => navigateTo(locale, '/faq')}>Ofte stillede spørgsmål</TextLink>
+          {/* <TextLink onClick={() => navigateTo(locale, '/faq')}>Ofte stillede spørgsmål</TextLink> */}
           <TextLink onClick={() => navigateTo(locale, '/privatpolitik')}>Privat Politik</TextLink>
           
 
