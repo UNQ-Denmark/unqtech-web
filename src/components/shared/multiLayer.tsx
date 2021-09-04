@@ -29,7 +29,6 @@ const MultiLayerWoo: React.FC = () => {
         "https://cdn.discordapp.com/attachments/832326372596121660/882520344735383552/Woo.png"
       ];
 
-
     return (
         <Container>
         <InnerContainer >

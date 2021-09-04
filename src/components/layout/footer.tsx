@@ -14,6 +14,15 @@ const StyledFooter = styled(Layout.Footer)`
   padding-top: 3rem;
 `;
 
+export const FooterIcon = styled.img`
+  margin: 0 12px;
+  cursor: pointer;
+  filter: invert(55%) sepia(10%) saturate(23%) hue-rotate(202deg) brightness(92%) contrast(88%);
+  transition: .3s ease-in-out;
+  &:hover {
+    filter: none;
+  }
+`
 
 const InnerFooter = styled(Layout.Footer)`
   padding: 0 15px;
@@ -69,16 +78,17 @@ const FooterComponent: React.FC<Props> = ({locale, contactRef}: Props) => {
 
 
           <TextXsmallBold style={{marginTop: '1.5rem'}}>EMAIL</TextXsmallBold>
-          <TextXsmall>	info@unqtech.dk</TextXsmall>
+          <TextXsmall>kontakt@unqtech.dk</TextXsmall>
 
 
-          <TextXsmallBold style={{marginTop: '1.5rem'}}>TELEFON</TextXsmallBold>
-          <TextXsmall>+45 12341234</TextXsmall>
+          {/* <TextXsmallBold style={{marginTop: '1.5rem'}}>TELEFON</TextXsmallBold>
+          <TextXsmall>+45 12341234</TextXsmall> */}
 
         </Col>
         <Col xs={20} sm={12} md={7}>
         
           <TextSmallBold>Sociale media</TextSmallBold>
+          <FooterIcon src="/icons/linkedin.svg" onClick={() => window.open('https://www.linkedin.com/company/unqtech-aps')} />
         </Col>
       </Row>
       </InnerFooter>
