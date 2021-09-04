@@ -12,6 +12,7 @@ const BtnBase = styled.button`
   line-height: 24px;
   text-align: center;
   border: 1px solid transparent;
+  transition: .2s ease-in-out;
   &:disabled {
     background: ${theme.colors.greyLight.grey5};
     color: ${theme.colors.greyLight.grey25};
@@ -85,12 +86,13 @@ export const BtnBlackOut = styled(BtnBase)`
 export const BtnWhiteOut = styled(BtnBase)`
   background: transparent;
   color: ${theme.colors.txtLight.white};
-  border: 2px solid ${theme.colors.txtLight.white};
+  border: 3px solid ${theme.colors.txtLight.white};
   &:disabled {
     color: ${theme.colors.greyLight.grey55};
   }
   &:hover:enabled {
     background: ${theme.colors.greyLight.grey5};
+    color: ${theme.colors.brandLight.secoundary};
   }
 `;
 

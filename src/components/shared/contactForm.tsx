@@ -3,17 +3,26 @@ import { graphql, useStaticQuery } from 'gatsby';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import React, { MutableRefObject } from 'react';
 import { useState } from 'react';
-import { BtnBlack } from './button';
+import { BtnBlack, BtnWhiteOut } from './button';
 import { IContactForm } from './contentful.interface';
 import { UNQSpinner } from './spinner';
 import { theme } from './theme';
-import { H2Bold, H3Bold } from './typography';
+import { H2Bold, H3, H3Bold } from './typography';
 
 const HeadContainer = styled.div`
   width: 100%;
   position: relative;
   z-index: 20;
   height: 630px;
+
+  background: hsla(174, 62%, 47%, 1);
+
+background: linear-gradient(90deg, hsla(174, 62%, 47%, 1) 0%, hsla(0, 0%, 100%, 0.8) 100%);
+
+background: -moz-linear-gradient(90deg, hsla(174, 62%, 47%, 1) 0%, hsla(0, 0%, 100%, 0.8) 100%);
+
+background: -webkit-linear-gradient(90deg, hsla(174, 62%, 47%, 1) 0%, hsla(0, 0%, 100%, 0.8) 100%);
+
 `;
 
 const HeadImage = styled(GatsbyImage)`
@@ -124,7 +133,7 @@ const ContactForm: React.FC<Props> = ({locale, contactRef}: Props) => {
   };
   return (
     <HeadContainer ref={contactRef}>
-    <HeadImage image={contactForm.image.gatsbyImageData} alt={contactForm.title} />
+    {/* <HeadImage image={contactForm.image.gatsbyImageData} alt={contactForm.title} /> */}
     <WavesBot xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
     <path fill={theme.colors.bgLight.grey} fillOpacity="1" d="M0,256L80,261.3C160,267,320,277,480,282.7C640,288,800,288,960,272C1120,256,1280,224,1360,208L1440,192L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path>
     </WavesBot>
@@ -140,7 +149,7 @@ const ContactForm: React.FC<Props> = ({locale, contactRef}: Props) => {
               onSubmit={handleSubmit}
               >
         <H2Bold style={{color: 'white', marginLeft: '1rem'}}>{contactForm.title}</H2Bold>
-          {success && <H3Bold style={{color: 'white', marginLeft: '1rem'}}>{contactForm.successMsg}</H3Bold>}
+          {success && <H3 style={{color: 'black', marginLeft: '1rem'}}>{contactForm.successMsg}</H3>}
           {isError && (
             <H3Bold style={{color: 'white', marginLeft: '1rem'}}>
               {contactForm.errorMsg}
@@ -186,9 +195,9 @@ const ContactForm: React.FC<Props> = ({locale, contactRef}: Props) => {
             disabled={success}
           ></textarea>
 
-          <BtnBlack disabled={success} style={{ margin: '1rem' }} type="submit">
+          <BtnWhiteOut disabled={success} style={{ margin: '1rem' }} type="submit">
           {contactForm.contactBtn}
-          </BtnBlack>
+          </BtnWhiteOut>
         </StyledForm>
       )}
     </Container>
