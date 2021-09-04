@@ -37,6 +37,8 @@ query HomePageQuery($locale: String) {
     nodes {
        title
         keywords
+        hasBtn
+        btnLink
         seoImage {
             file {
             url
