@@ -37,8 +37,6 @@ query HomePageQuery($locale: String) {
     nodes {
        title
         keywords
-        hasBtn
-        btnLink
         seoImage {
             file {
             url
@@ -62,6 +60,8 @@ query HomePageQuery($locale: String) {
       }
       features {
         title
+        hasBtn
+        btnLink
         image {
           title
           gatsbyImageData(width: 300, quality: 100, placeholder: BLURRED)
