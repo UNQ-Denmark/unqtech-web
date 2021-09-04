@@ -102,25 +102,6 @@ const WebSitePage: React.FC<Props> = ({ pageContext, data }: Props) => {
       </SiteContent>
       <SiteContent background={'white'}>
         <SectionRow>
-          <SectionCol xs={{ span: 24, order: 2 }} md={{ span: 12, order: 2 }}>
-            <H3>{content.sections[2].title}</H3>
-            <TextRegularMarkdown>
-              <ReactMarkdown>
-                {content.sections[2].description.description}
-              </ReactMarkdown>
-            </TextRegularMarkdown>
-          </SectionCol>
-          <Col xs={{ span: 24, order: 1 }} md={{ span: 12, order: 1 }}>
-            <SectionImg
-              imgStyle={{ objectFit: 'contain' }}
-              image={content.sections[2].image.gatsbyImageData}
-              alt={content.sections[2].image.title}
-            />
-          </Col>
-        </SectionRow>
-      </SiteContent>
-      <SiteContent background={'white'}>
-        <SectionRow>
           {content.features &&
             content.features.length > 0 &&
             content.features.map((f) => (
