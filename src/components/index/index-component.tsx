@@ -170,8 +170,8 @@ const IndexPage: React.FC<Props> = ({ content, locale }: Props) => {
           </H1>
         </AnnimatedHead>
         <ReferenceContainer>
-          {content.refImage.length > 0 && content.refImage.map(img => (
-            <RefLogo objectFit={'contain'} image={img.gatsbyImageData} alt={img.title} onClick={() => window.open(img.description, '_blank')?.focus()} />
+          {content.refImage.length > 0 && content.refImage.map((img, key )=> (
+            <RefLogo key={key} objectFit={'contain'} image={img.gatsbyImageData} alt={img.title} onClick={() => window.open(img.description, '_blank')?.focus()} />
           ))}
         </ReferenceContainer>
       </HeadContainer>

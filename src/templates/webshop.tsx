@@ -59,7 +59,7 @@ const WebshopPage: React.FC<Props> = ({ pageContext, data }: Props) => {
 
       {content && content.sections && content.sections.length > 0 && content.sections.map((section, key ) => (
         (key % 2 == 1) ?
-        <SiteContent background={theme.colors.gradients.darkblueBg} backgrondImg={theme.colors.gradients.darkblue}>
+        <SiteContent key={key} background={theme.colors.gradients.darkblueBg} backgrondImg={theme.colors.gradients.darkblue}>
         <SectionRow >
           <SectionCol xs={{span: 24, order: 2}} md={{span: 12, order: 1}}>
             <H3 style={{color: 'white'}}>{section.title}</H3>
@@ -71,7 +71,7 @@ const WebshopPage: React.FC<Props> = ({ pageContext, data }: Props) => {
         </SectionRow>
       </SiteContent>
       :
-      <SiteContent background={'white'}>
+      <SiteContent key={key} background={'white'}>
         <SectionRow>
           <SectionCol xs={{span: 24, order: 2}} md={{span: 12, order: 2}}>
             <H3>{section.title}</H3>

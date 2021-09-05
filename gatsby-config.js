@@ -13,7 +13,7 @@ module.exports = {
     titleTemplate: '%s · UNQTech ',
     description: `UNQTech website`,
     author: `Andreas Soelberg Linkedin: https://www.linkedin.com/in/andreas-soelberg-61276115a/`,
-    siteUrl: 'https://www.UNQTech.dk', // No trailing slash allowed!
+    siteUrl: 'https://www.unqtech.dk', // No trailing slash allowed!
     image: '', // Path to your image you placed in the 'static' folder
   },
   plugins: [
@@ -21,8 +21,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `HighView website`,
-        short_name: `HighView`,
+        name: `UNQTech website`,
+        short_name: `UNQTech`,
         start_url: `/`,
         background_color: `#663399`,
         theme_color: `#663399`,
@@ -46,6 +46,14 @@ module.exports = {
     },
     `@contentful/gatsby-transformer-contentful-richtext`,
     'gatsby-plugin-sitemap',
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        host: 'https://unqtech.dk/',
+        sitemap: 'https://unqtech.dk/sitemap/sitemap-0.xml',
+        policy: [{ userAgent: '*', allow: '/' }]
+      }
+    },
     {
       resolve: `gatsby-plugin-netlify`,
       options: {
