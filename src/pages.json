@@ -26,6 +26,10 @@
             {
                 "componentName": "hosting",
                 "slug": "/services/hosting"
+            },
+            {
+                "componentName": "legal",
+                "slug": "/Privatlivspolitik"
             }
         ]
     },
@@ -56,6 +60,10 @@
             {
                 "componentName": "hosting",
                 "slug": "/services/hosting"
+            },
+            {
+                "componentName": "legal",
+                "slug": "/privacy-policy"
             }
         ]
     }

@@ -28,7 +28,14 @@ const WebshopPage: React.FC<Props> = ({ pageContext, data }: Props) => {
       locale={pageContext.locale}
       componentName={pageContext.componentName}
     >
-      <Seo title={content.title} image={content.seoImage.file.url} keywords={content.keywords} />
+      <Seo
+        title={content.title} 
+        image={content.seoImage.file.url} 
+        keywords={content.keywords}
+        pathname={window.location.href}
+        lang={pageContext.locale}
+        description={content.seoDescription.seoDescription}
+        />
       <HeadContainer>
         <HeadImage image={content.headImage.gatsbyImageData} alt={content.title} />
         <HeadTextContainer>
@@ -57,7 +64,9 @@ const WebshopPage: React.FC<Props> = ({ pageContext, data }: Props) => {
        </SectionRow>
       </SiteContent>
 
-      {content && content.sections && content.sections.length > 0 && content.sections.map((section, key ) => (
+      {content && content.sections && content.sections.length > 0 && content.sections.map((section, key ) => {
+        if(key == 0) return 
+        else return (
         (key % 2 == 1) ?
         <SiteContent key={key} background={theme.colors.gradients.darkblueBg} backgrondImg={theme.colors.gradients.darkblue}>
         <SectionRow >
@@ -82,7 +91,7 @@ const WebshopPage: React.FC<Props> = ({ pageContext, data }: Props) => {
           </Col>
         </SectionRow>
       </SiteContent>
-      ))}
+)})}
     </SiteLayout>
   );
 };

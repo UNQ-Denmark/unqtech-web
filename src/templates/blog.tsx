@@ -45,7 +45,6 @@ type Props = {
 };
 
 const CasesPage: React.FC<Props> = ({ pageContext, data }: Props) => {
-  const [loading, setLoading] = useState(false);
 
   return (
     <SiteLayout

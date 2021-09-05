@@ -45,6 +45,9 @@ const HostingPage: React.FC<Props> = ({ pageContext, data }: Props) => {
         title={content.title}
         image={content.seoImage.file.url}
         keywords={content.keywords}
+        pathname={window.location.href}
+        lang={pageContext.locale}
+        description={content.seoDescription.seoDescription}
       />
       <HeadContainer>
         <HeadImage

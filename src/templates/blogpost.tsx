@@ -18,7 +18,11 @@ const BlogPost: React.FC<Props> = ({ data: { post } }: Props) => {
       componentName={'blog'}
     >
       <Seo 
-        title="UNQ Kontakt" 
+        title={post.nodes[0].title}
+        pathname={window.location.href}
+        image={post.nodes[0].image.file.url}
+        description={`${post.nodes[0].title}, ${post.nodes[0].type}, ${post.nodes[0].date}, ${post.nodes[0].author.name}`}
+
       />
       <SiteContent>
       <BlogPostComponent article={post.nodes[0]} />
@@ -46,6 +50,9 @@ export const query = graphql`
             }
             image {
               gatsbyImageData(width: 1200, placeholder: BLURRED)
+              file {
+                url
+              }
             }
             author {
               linkedIn

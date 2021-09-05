@@ -20,10 +20,11 @@ const Index: React.FC<Props> = ({ pageContext, data }: Props) => {
       componentName={pageContext.componentName}
     >
       <Seo
-        title="Webudvikling, design, integration"
-        pathname="/"
-        image={data.allContentfulHomePage.nodes[0].seoImage.file.url}
+        title={data.allContentfulHomePage.nodes[0].title}
+        pathname={window.location.href}
         lang={pageContext.locale}
+        image={data.allContentfulHomePage.nodes[0].seoImage.file.url}
+        keywords={data.allContentfulHomePage.nodes[0].keywords} 
       />
         <IndexPage locale={pageContext.locale} content={data.allContentfulHomePage.nodes[0]} />
     </SiteLayout>
