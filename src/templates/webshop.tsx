@@ -38,7 +38,7 @@ const WebshopPage: React.FC<Props> = ({ pageContext, data }: Props) => {
       <Waves viewBox="0 0 500 150" preserveAspectRatio="none"><path d="M0.00,49.98 C149.99,150.00 350.85,-49.98 505.46,66.61 L500.00,150.00 L0.00,150.00 Z" style={{stroke: "none", fill: "#fff"}}></path></Waves>
       </HeadContainer>
       <SectionRow style={{width: '100%', padding: '0', zIndex: 100, position: 'relative', background: 'white', overflow: 'hidden'}}>
-          <Col xs={24} md={15}>
+          <Col xs={24} md={12}>
             <MultiLayerWoo  />
           </Col>
           <SectionCol xs={22} md={8}>
@@ -57,61 +57,32 @@ const WebshopPage: React.FC<Props> = ({ pageContext, data }: Props) => {
        </SectionRow>
       </SiteContent>
 
-      <SiteContent background={theme.colors.gradients.darkblueBg} backgrondImg={theme.colors.gradients.darkblue}>
+      {content && content.sections && content.sections.length > 0 && content.sections.map((section, key ) => (
+        (key % 2 == 1) ?
+        <SiteContent background={theme.colors.gradients.darkblueBg} backgrondImg={theme.colors.gradients.darkblue}>
         <SectionRow >
           <SectionCol xs={{span: 24, order: 2}} md={{span: 12, order: 1}}>
-            <H3 style={{color: 'white'}}>{content.sections[1].title}</H3>
-            <TextRegularMarkdown style={{color: 'white'}}><ReactMarkdown>{content.sections[1].description.description}</ReactMarkdown></TextRegularMarkdown>
+            <H3 style={{color: 'white'}}>{section.title}</H3>
+            <TextRegularMarkdown style={{color: 'white'}}><ReactMarkdown>{section.description.description}</ReactMarkdown></TextRegularMarkdown>
           </SectionCol>
           <Col xs={{span: 24, order: 1}} md={{span: 12, order: 2}}>
-            <SectionImg image={content.sections[1].image.gatsbyImageData} alt={content.sections[1].image.title} />
+            <SectionImg image={section.image.gatsbyImageData} alt={section.image.title} />
           </Col>
         </SectionRow>
       </SiteContent>
+      :
       <SiteContent background={'white'}>
         <SectionRow>
           <SectionCol xs={{span: 24, order: 2}} md={{span: 12, order: 2}}>
-            <H3>{content.sections[2].title}</H3>
-            <TextRegularMarkdown><ReactMarkdown>{content.sections[2].description.description}</ReactMarkdown></TextRegularMarkdown>
+            <H3>{section.title}</H3>
+            <TextRegularMarkdown><ReactMarkdown>{section.description.description}</ReactMarkdown></TextRegularMarkdown>
           </SectionCol>
           <Col xs={{span: 24, order: 1}} md={{span: 12, order: 1}}>
-            <SectionImg imgStyle={{objectFit: 'contain'}} image={content.sections[2].image.gatsbyImageData} alt={content.sections[2].image.title} />
+            <SectionImg imgStyle={{objectFit: 'contain'}} image={section.image.gatsbyImageData} alt={section.image.title} />
           </Col>
         </SectionRow>
       </SiteContent>
-      <SiteContent background={theme.colors.gradients.darkblueBg} backgrondImg={theme.colors.gradients.darkblue}>
-        <SectionRow >
-          <SectionCol xs={{span: 24, order: 2}} md={{span: 12, order: 1}}>
-            <H3 style={{color: 'white'}}>{content.sections[3].title}</H3>
-            <TextRegularMarkdown style={{color: 'white'}}><ReactMarkdown>{content.sections[3].description.description}</ReactMarkdown></TextRegularMarkdown>
-          </SectionCol>
-          <Col xs={{span: 24, order: 1}} md={{span: 12, order: 2}}>
-            <SectionImg image={content.sections[3].image.gatsbyImageData} alt={content.sections[3].image.title} />
-          </Col>
-        </SectionRow>
-      </SiteContent>
-       <SiteContent background={'white'}>
-        <SectionRow>
-          <SectionCol xs={{span: 24, order: 2}} md={{span: 12, order: 2}}>
-            <H3>{content.sections[4].title}</H3>
-            <TextRegularMarkdown><ReactMarkdown>{content.sections[4].description.description}</ReactMarkdown></TextRegularMarkdown>
-          </SectionCol>
-          <Col xs={{span: 24, order: 1}} md={{span: 12, order: 1}}>
-            <SectionImg imgStyle={{objectFit: 'contain'}} image={content.sections[4].image.gatsbyImageData} alt={content.sections[4].image.title} />
-          </Col>
-        </SectionRow>
-      </SiteContent>
-      <SiteContent background={theme.colors.gradients.darkblueBg} backgrondImg={theme.colors.gradients.darkblue}>
-        <SectionRow>
-          <Col xs={{span: 24, order: 2}} md={{span: 12, order: 2}}>
-            <SectionImg imgStyle={{objectFit: 'contain'}} image={content.security.image.gatsbyImageData} alt={content.security.image.title} />
-          </Col>
-          <SectionCol xs={{span: 24, order: 1}} md={{span: 12, order: 1}}>
-            <H3 style={{color: 'white'}}>{content.security.title}</H3>
-            <TextRegularMarkdown style={{color: 'white'}}><ReactMarkdown>{content.security.description.description}</ReactMarkdown></TextRegularMarkdown>
-          </SectionCol>
-        </SectionRow>
-      </SiteContent>     
+      ))}
     </SiteLayout>
   );
 };

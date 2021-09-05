@@ -13,10 +13,12 @@ const HeadContainer = styled.div`
   width: 100%;
   position: relative;
   z-index: 20;
-  height: 500px;
+  height: 420px;
 
   background: hsla(174, 62%, 47%, 1);
-
+  @media(max-width: 760px) {
+      height: 550px;
+    }
 `;
 
 
@@ -31,7 +33,7 @@ const WavesBot = styled.svg`
 const Container = styled.div`
     z-index: 5;
     position: absolute;
-    top: 100px;
+    top: 20px;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -40,7 +42,7 @@ const Container = styled.div`
 `;
 
 const StyledForm = styled.form`
-  max-width: 445px;
+  max-width: 500px;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -51,17 +53,12 @@ const StyledForm = styled.form`
     padding: 8px 14px;
     outline: none;
     margin: 1rem;
+    width: calc(50% - 2rem);
     border: 2px solid ${theme.colors.greyLight.grey5};
-  }
 
-  textarea {
-    border-radius: 5px;
-    padding: 8px 14px;
-    outline: none;
-    resize: none;
-    width: 100%;
-    margin: 1rem;
-    border: 2px solid ${theme.colors.greyLight.grey5};
+    @media(max-width: 760px) {
+      width: 100%;
+    }
   }
 `;
 

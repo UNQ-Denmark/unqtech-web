@@ -8,17 +8,6 @@ import { ISection } from './contentful.interface'
 import { theme } from './theme'
 import { H3Bold, TextSmallMarkdown } from './typography'
 
-const Container = styled.div`
-    width: calc(100% - 4rem);
-    margin: 2rem;
-    height: 480px;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    padding: 1rem;
-    position: relative;
-    align-content: flex-start;
-    `
 
 const Img = styled(GatsbyImage)`
     height: 200px;
@@ -27,7 +16,7 @@ const Img = styled(GatsbyImage)`
     `
 
 const FeatureBody = styled.div`
-    margin-top: 2rem;
+    margin-top: 1rem;
     width: 100%;
 `
 
@@ -44,6 +33,18 @@ type Props = {
 }
 
 const FeatureItem: React.FC<Props> = ({feature}: Props) => {
+
+    const Container = styled.div`
+    width: calc(100% - 4rem);
+    margin: 2rem;
+    height: ${feature.hasBtn ? '480px' : '350px'};
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 1rem;
+    position: relative;
+    align-content: flex-start;
+    `
 
     return (
         <Container>

@@ -88,10 +88,12 @@ export const TextRegular = styled.p`
 `
 
 export const TextRegularMarkdown = styled.div`
-        font-size: 16px;
-        font-weight: 300;
-        line-height: 24px;
-        color: ${theme.colors.greyLight.grey55};
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 24px;
+    color: ${theme.colors.greyLight.grey55};
+    text-align: justify;
+    hyphens: auto;
 `
 
 
@@ -116,10 +118,12 @@ export const TextSmall = styled.p`
     color: ${theme.colors.greyLight.grey55};
 `
 export const TextSmallMarkdown = styled.div`
-        font-size: 14px;
-        font-weight: 300;
-        line-height: 24px;
-        color: ${theme.colors.greyLight.grey55};
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 24px;
+    color: ${theme.colors.greyLight.grey55};
+    text-align: justify;
+    hyphens: auto;
 `
 
 export const TextXsmallBold = styled.p`

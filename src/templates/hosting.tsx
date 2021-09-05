@@ -62,65 +62,34 @@ const HostingPage: React.FC<Props> = ({ pageContext, data }: Props) => {
           ></path>
         </Waves>
       </HeadContainer>
+
+      {content && content.sections && content.sections.length > 0 && content.sections.map((section, key ) => (
+        (key % 2 == 1) ?
+        <SiteContent background={theme.colors.gradients.darkblueBg} backgrondImg={theme.colors.gradients.darkblue}>
+        <SectionRow >
+          <SectionCol xs={{span: 24, order: 2}} md={{span: 12, order: 1}}>
+            <H3 style={{color: 'white'}}>{section.title}</H3>
+            <TextRegularMarkdown style={{color: 'white'}}><ReactMarkdown>{section.description.description}</ReactMarkdown></TextRegularMarkdown>
+          </SectionCol>
+          <Col xs={{span: 24, order: 1}} md={{span: 12, order: 2}}>
+            <SectionImg image={section.image.gatsbyImageData} alt={section.image.title} />
+          </Col>
+        </SectionRow>
+      </SiteContent>
+      :
       <SiteContent background={'white'}>
         <SectionRow>
-          <SectionCol xs={{ span: 24, order: 2 }} md={{ span: 12, order: 2 }}>
-            <H3>{content.sections[0].title}</H3>
-            <TextRegularMarkdown>
-              <ReactMarkdown>
-                {content.sections[0].description.description}
-              </ReactMarkdown>
-            </TextRegularMarkdown>
+          <SectionCol xs={{span: 24, order: 2}} md={{span: 12, order: 2}}>
+            <H3>{section.title}</H3>
+            <TextRegularMarkdown><ReactMarkdown>{section.description.description}</ReactMarkdown></TextRegularMarkdown>
           </SectionCol>
-          <Col xs={{ span: 24, order: 1 }} md={{ span: 12, order: 1 }}>
-            <SectionImg
-              imgStyle={{ objectFit: 'contain' }}
-              image={content.sections[0].image.gatsbyImageData}
-              alt={content.sections[0].image.title}
-            />
+          <Col xs={{span: 24, order: 1}} md={{span: 12, order: 1}}>
+            <SectionImg imgStyle={{objectFit: 'contain'}} image={section.image.gatsbyImageData} alt={section.image.title} />
           </Col>
         </SectionRow>
       </SiteContent>
-      <SiteContent
-        background={theme.colors.gradients.darkblueBg}
-        backgrondImg={theme.colors.gradients.darkblue}
-      >
-        <SectionRow>
-          <SectionCol xs={{ span: 24, order: 2 }} md={{ span: 12, order: 1 }}>
-            <H3 style={{ color: 'white' }}>{content.sections[1].title}</H3>
-            <TextRegularMarkdown style={{ color: 'white' }}>
-              <ReactMarkdown>
-                {content.sections[1].description.description}
-              </ReactMarkdown>
-            </TextRegularMarkdown>
-          </SectionCol>
-          <Col xs={{ span: 24, order: 1 }} md={{ span: 12, order: 2 }}>
-            <SectionImg
-              image={content.sections[1].image.gatsbyImageData}
-              alt={content.sections[1].image.title}
-            />
-          </Col>
-        </SectionRow>
-      </SiteContent>
-      <SiteContent background={'white'}>
-        <SectionRow>
-          <SectionCol xs={{ span: 24, order: 2 }} md={{ span: 12, order: 2 }}>
-            <H3>{content.sections[2].title}</H3>
-            <TextRegularMarkdown>
-              <ReactMarkdown>
-                {content.sections[2].description.description}
-              </ReactMarkdown>
-            </TextRegularMarkdown>
-          </SectionCol>
-          <Col xs={{ span: 24, order: 1 }} md={{ span: 12, order: 1 }}>
-            <SectionImg
-              imgStyle={{ objectFit: 'contain' }}
-              image={content.sections[2].image.gatsbyImageData}
-              alt={content.sections[2].image.title}
-            />
-          </Col>
-        </SectionRow>
-      </SiteContent>
+      ))}
+
       <SiteContent background={'white'}>
         <SectionRow>
           {content.features &&
@@ -132,6 +101,7 @@ const HostingPage: React.FC<Props> = ({ pageContext, data }: Props) => {
             ))}
         </SectionRow>
       </SiteContent>
+      
     </SiteLayout>
   );
 };

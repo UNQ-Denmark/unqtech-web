@@ -55,17 +55,16 @@ const FooterComponent: React.FC<Props> = ({locale, contactRef}: Props) => {
       <InnerFooter style={{background: theme.colors.bgLight.grey }}>
       <Row gutter={24} style={{ marginBottom: '3rem', background: theme.colors.bgLight.grey, width: '100%' }} justify='center' >
         <Col xs={20} sm={12} md={5}>
-          <TextSmallBold>OM UNQTech</TextSmallBold>
-          <TextLink onClick={() => navigateTo(locale, 'about')}>Om UNQTech</TextLink>
-          <TextLink onClick={() => navigateTo(locale, 'services')}>Services </TextLink>
-          <TextLink onClick={() => navigateTo(locale, 'blog')}>Blog</TextLink>
+          <TextSmallBold>SERVICES</TextSmallBold>
+          <TextLink onClick={() => navigateTo(locale, 'webshop')}>{locale === 'da-DK' ? 'Webshop' : 'E-commerce'}</TextLink>
+          <TextLink onClick={() => navigateTo(locale, 'website')}>{'Website'}</TextLink>
+          <TextLink onClick={() => navigateTo(locale, 'hosting')}>{'Hosting'}</TextLink>
 
 
         </Col>
         <Col xs={20} sm={12} md={5}>
-          <TextSmallBold>HJÆLP</TextSmallBold>
-          {/* <TextLink>My Account</TextLink> */}
-          {/* <TextLink onClick={() => navigateTo(locale, '/faq')}>Ofte stillede spørgsmål</TextLink> */}
+          <TextSmallBold>INFORMATION</TextSmallBold>
+          <TextLink onClick={() => navigateTo(locale, 'blog')}>{'Blog'}</TextLink>
           <TextLink onClick={() => navigateTo(locale, '/privatpolitik')}>Privat Politik</TextLink>
           
 

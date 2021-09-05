@@ -150,17 +150,13 @@ const IndexPage: React.FC<Props> = ({ content, locale }: Props) => {
     };
   }, []);
 
-  const DesignLink = <StyledLink to={locale === 'da-DK' ? '/services/webshop' : '/en/services/e-commerce'}>{locale === 'da-DK' ? 'Designer' : 'Design'}</StyledLink>
-  const DevelopLink = <StyledLink to={locale === 'da-DK' ? '/services/website' : '/en/services/website'}>{locale === 'da-DK' ? 'Udvikler' : 'Develope'}</StyledLink>
-  const MaintainLink = <StyledLink to={locale === 'da-DK' ? '/services/hosting' : '/en/services/hosting'}>{locale === 'da-DK' ? 'Vedligeholder' : 'Maintain'}</StyledLink>
-  const final = locale === 'da-DK' ? 'Websites og Webshops' : 'Websites and eCommerce stores'
-
   return (
     <div>
       <HeadContainer ref={headRef}>
       <Waves viewBox="0 0 500 150" preserveAspectRatio="none"><path d="M0.00,49.98 C149.99,150.00 350.85,-49.98 505.46,66.61 L500.00,150.00 L0.00,150.00 Z" style={{stroke: "none", fill: "#fff"}}></path></Waves>
         <AnnimatedHead>
-          <H1Ultra
+        <H1Ultra style={{textAlign: 'center', color: theme.colors.txtLight.white}}>UNQTech</H1Ultra>
+          <H1
             style={{
               textAlign: 'center',
               fontWeight: 300,
@@ -171,8 +167,7 @@ const IndexPage: React.FC<Props> = ({ content, locale }: Props) => {
               style={{ whiteSpace: 'pre', width: 'fit-content' }}
               ref={el}
             />
-          </H1Ultra>
-          <H1 style={{color: 'white', maxWidth: '600px', marginTop: '80px', wordBreak: 'keep-all'}}>{locale === 'da-DK' ? 'Vi' : 'We'} {DesignLink}, {DevelopLink} { locale === 'da-DK' ? 'og' : 'and'} {MaintainLink} {final}</H1>
+          </H1>
         </AnnimatedHead>
         <ReferenceContainer>
           {content.refImage.length > 0 && content.refImage.map(img => (
