@@ -64,12 +64,12 @@ module.exports = {
         generateMatchPathRewrites: true, // boolean to turn off automatic creation of redirect rules for client only paths
       },
     },
-    // {
-    //   resolve: "gatsby-plugin-google-tagmanager",
-    //   options: {
-    //     id: process.env.GTM_ID,
-    //     includeInDevelopment: false,
-    //   },
-    // },
+    {
+      resolve: "gatsby-plugin-google-tagmanager",
+      options: {
+        id: process.env.GTM_ID,
+        includeInDevelopment: false,
+      },
+    },
   ],
 };
