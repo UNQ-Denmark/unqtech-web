@@ -27,7 +27,7 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: 'src/images/logo.png',
+        icon: 'src/images/favicon.png',
         author:
           'Andreas Soelberg - Linkedin: https://www.linkedin.com/in/andreas-soelberg-61276115a/',
       },
