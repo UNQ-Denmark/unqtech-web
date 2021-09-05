@@ -12,6 +12,7 @@ import { IWebShop } from '../components/shared/contentful.interface';
 import ReactMarkdown from 'react-markdown';
 import MultiLayerWoo from '../components/shared/multiLayer';
 import FeatureItem from '../components/shared/feature';
+import { isBrowser } from '../components/shared/utils';
 
 interface Props {
   pageContext: PageContext
@@ -32,7 +33,7 @@ const WebshopPage: React.FC<Props> = ({ pageContext, data }: Props) => {
         title={content.title} 
         image={content.seoImage.file.url} 
         keywords={content.keywords}
-        pathname={window.location.href}
+        pathname={isBrowser() ? window.location.href : '/'}
         lang={pageContext.locale}
         description={content.seoDescription.seoDescription}
         />

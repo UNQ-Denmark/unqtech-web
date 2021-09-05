@@ -6,6 +6,7 @@ import { PageContext } from '../pageContext';
 import React from 'react';
 import Seo from '../components/shared/Seo';
 import { graphql } from 'gatsby';
+import { isBrowser } from '../components/shared/utils';
 
 type Props = {
   pageContext: PageContext;
@@ -21,7 +22,7 @@ const Index: React.FC<Props> = ({ pageContext }: Props) => {
     >
       <Seo
         title="Webudvikling, design, integration"
-        pathname={window.location.href}
+        pathname={isBrowser() ? window.location.href : '/'}
         lang={pageContext.locale}
         // image={data.allContentfulHomePage.nodes[0].seoImage.file.url}
       />

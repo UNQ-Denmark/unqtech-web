@@ -5,6 +5,7 @@ import { PageContext } from '../pageContext';
 import React from 'react';
 import Seo from '../components/shared/Seo';
 import { graphql } from 'gatsby';
+import { isBrowser } from '../components/shared/utils';
 
 type Props = {
   data: { post: {nodes: any}}
@@ -19,10 +20,9 @@ const BlogPost: React.FC<Props> = ({ data: { post } }: Props) => {
     >
       <Seo 
         title={post.nodes[0].title}
-        pathname={window.location.href}
+        pathname={isBrowser() ? window.location.href : '/'}
         image={post.nodes[0].image.file.url}
         description={`${post.nodes[0].title}, ${post.nodes[0].type}, ${post.nodes[0].date}, ${post.nodes[0].author.name}`}
-
       />
       <SiteContent>
       <BlogPostComponent article={post.nodes[0]} />

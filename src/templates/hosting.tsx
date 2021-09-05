@@ -27,6 +27,7 @@ import { IHostingPage } from '../components/shared/contentful.interface';
 import FeatureItem from '../components/shared/feature';
 import { graphql } from 'gatsby';
 import ReactMarkdown from 'react-markdown';
+import { isBrowser } from '../components/shared/utils';
 
 interface Props {
   pageContext: PageContext;
@@ -45,7 +46,7 @@ const HostingPage: React.FC<Props> = ({ pageContext, data }: Props) => {
         title={content.title}
         image={content.seoImage.file.url}
         keywords={content.keywords}
-        pathname={window.location.href}
+        pathname={isBrowser() ? window.location.href : '/'}
         lang={pageContext.locale}
         description={content.seoDescription.seoDescription}
       />
