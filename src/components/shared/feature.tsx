@@ -24,7 +24,6 @@ const Img = styled(GatsbyImage)`
     height: 200px;
     width: 200px;
     border-radius: 100px;
-    filter: grayscale(100%);
     `
 
 const FeatureBody = styled.div`

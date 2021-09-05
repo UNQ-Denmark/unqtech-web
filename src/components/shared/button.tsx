@@ -86,7 +86,8 @@ export const BtnBlackOut = styled(BtnBase)`
 export const BtnWhiteOut = styled(BtnBase)`
   background: transparent;
   color: ${theme.colors.txtLight.white};
-  border: 3px solid ${theme.colors.txtLight.white};
+  border: 2px solid ${theme.colors.txtLight.white};
+  font-weight: 300;
   &:disabled {
     color: ${theme.colors.greyLight.grey55};
   }

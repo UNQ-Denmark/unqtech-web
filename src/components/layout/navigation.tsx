@@ -112,7 +112,7 @@ const Icons = styled.img`
 export const ContactBtn = styled.button`
   height: 50px;
   border-radius: 25px;
-  background: #02ccff;
+  background: ${theme.colors.brandLight.secoundary};
   color: white;
   padding: 0.5rem 1.5rem;
   margin: 0 2rem;

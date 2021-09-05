@@ -35,6 +35,8 @@ const InnerFooter = styled(Layout.Footer)`
 
 const TextLink = styled(TextXsmallBold)`
   cursor: pointer;
+  font-weight: 300;
+  color: #828283;
   &:hover {
     color: ${theme.colors.greyLight.grey15};
   }
@@ -78,7 +80,7 @@ const FooterComponent: React.FC<Props> = ({locale, contactRef}: Props) => {
 
 
           <TextXsmallBold style={{marginTop: '1.5rem'}}>EMAIL</TextXsmallBold>
-          <TextXsmall>kontakt@unqtech.dk</TextXsmall>
+          <TextXsmall>support@unqtech.dk</TextXsmall>
 
 
           {/* <TextXsmallBold style={{marginTop: '1.5rem'}}>TELEFON</TextXsmallBold>

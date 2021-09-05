@@ -103,7 +103,7 @@ export const TextBlack = styled(TextRegular)`
 `
 
 export const TextSmallBold = styled.p`
-    font-size: 14px;
+    font-size: 16px;
     font-weight: bold;
     line-height: 24px;
     color: ${theme.colors.txtLight.black};
