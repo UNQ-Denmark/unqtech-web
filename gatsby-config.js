@@ -10,7 +10,7 @@ require('dotenv').config({
 module.exports = {
   siteMetadata: {
     title: `UNQTech`,
-    titleTemplate: '%s · UNQTech ',
+    titleTemplate: '%s | UNQTech ',
     description: `UNQTech website`,
     author: `Andreas Soelberg Linkedin: https://www.linkedin.com/in/andreas-soelberg-61276115a/`,
     siteUrl: 'https://www.unqtech.dk', // No trailing slash allowed!
