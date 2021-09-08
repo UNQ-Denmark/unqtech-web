@@ -76,8 +76,6 @@ export interface IHostingPage {
     gatsbyImageData: IGatsbyImageData;
   };
   keywords: string[];
-  sections: ISection[];
-  features: ISection[];
   seoImage: {
     file: {
       url: string;
@@ -85,5 +83,41 @@ export interface IHostingPage {
   };
   seoDescription: {
     seoDescription: string;
+  };
+  infrastructureHead: string
+  firstCol: {
+    firstCol: string
+  }
+  secoundCol: {
+    secoundCol: string
+  }
+  skillsHead: string
+  features: ISection[];
+  techHead: string
+  technologies: ITech[]
+  priceHead: string
+  priceCards: IPriceCard[]
+  vatText: string
+}
+
+export interface IPriceCard {
+  title: string;
+  price: number;
+  currency: string
+  description: {
+    description: string;
+  };
+  btnText: string;
+  features: string[];
+  bestValue: boolean
+}
+
+export interface ITech {
+  title: string
+  description: {
+    description: string;
+  };
+  image: {
+    gatsbyImageData: IGatsbyImageData;
   };
 }

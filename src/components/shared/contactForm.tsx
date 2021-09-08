@@ -8,6 +8,7 @@ import { IContactForm } from './contentful.interface';
 import { UNQSpinner } from './spinner';
 import { theme } from './theme';
 import { H2Bold, H3, H3Bold } from './typography';
+import { isBrowser } from './utils';
 
 const HeadContainer = styled.div`
   width: 100%;
@@ -98,7 +99,8 @@ const ContactForm: React.FC<Props> = ({locale, contactRef}: Props) => {
       body: encode({
         'form-name': form.getAttribute('name'),
         name: name,
-        email: email
+        email: email,
+        page: isBrowser() && window.location.pathname
       }),
     })
       .then(() => {
@@ -115,7 +117,7 @@ const ContactForm: React.FC<Props> = ({locale, contactRef}: Props) => {
       });
   };
   return (
-    <HeadContainer ref={contactRef}>
+    <HeadContainer ref={contactRef} id={"contactForm"}>
     <WavesBot xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
     <path fill={theme.colors.bgLight.grey} fillOpacity="1" d="M0,256L80,261.3C160,267,320,277,480,282.7C640,288,800,288,960,272C1120,256,1280,224,1360,208L1440,192L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path>
     </WavesBot>

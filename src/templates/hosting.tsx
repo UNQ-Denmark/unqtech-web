@@ -7,27 +7,23 @@ import {
   HeadContainer,
   HeadImage,
   HeadTextContainer,
-  SectionCol,
-  SectionImg,
-  SectionRow,
+  SectionHead,
+  SectionRowHosting,
   Waves,
 } from '../components/shared/page-components';
 import { Col } from 'antd';
 import {
   H1Bold,
-  H1Ultra,
   H2,
-  H2Bold,
-  H3,
-  TextRegular,
   TextRegularMarkdown,
+  TextXsmall,
 } from '../components/shared/typography';
-import { theme } from '../components/shared/theme';
 import { IHostingPage } from '../components/shared/contentful.interface';
 import FeatureItem from '../components/shared/feature';
 import { graphql } from 'gatsby';
 import ReactMarkdown from 'react-markdown';
 import { isBrowser } from '../components/shared/utils';
+import PriceCard from '../components/shared/price-card';
 
 interface Props {
   pageContext: PageContext;
@@ -67,35 +63,21 @@ const HostingPage: React.FC<Props> = ({ pageContext, data }: Props) => {
         </Waves>
       </HeadContainer>
 
-      {content && content.sections && content.sections.length > 0 && content.sections.map((section, key ) => (
-        (key % 2 == 1) ?
-        <SiteContent key={key} background={theme.colors.gradients.darkblueBg} backgrondImg={theme.colors.gradients.darkblue}>
-        <SectionRow >
-          <SectionCol xs={{span: 24, order: 2}} md={{span: 12, order: 1}}>
-            <H3 style={{color: 'white'}}>{section.title}</H3>
-            <TextRegularMarkdown style={{color: 'white'}}><ReactMarkdown>{section.description.description}</ReactMarkdown></TextRegularMarkdown>
-          </SectionCol>
-          <Col xs={{span: 24, order: 1}} md={{span: 12, order: 2}}>
-            <SectionImg image={section.image.gatsbyImageData} alt={section.image.title} />
+      <SiteContent background={'white'}>
+        <SectionRowHosting>
+          <SectionHead>{content.infrastructureHead}</SectionHead>
+          <Col xs={{span: 24}} md={{span: 12}} style={{padding: '2rem'}}>
+            <TextRegularMarkdown><ReactMarkdown>{content.firstCol.firstCol}</ReactMarkdown></TextRegularMarkdown>
           </Col>
-        </SectionRow>
-      </SiteContent>
-      :
-      <SiteContent key={key} background={'white'}>
-        <SectionRow>
-          <SectionCol xs={{span: 24, order: 2}} md={{span: 12, order: 2}}>
-            <H3>{section.title}</H3>
-            <TextRegularMarkdown><ReactMarkdown>{section.description.description}</ReactMarkdown></TextRegularMarkdown>
-          </SectionCol>
-          <Col xs={{span: 24, order: 1}} md={{span: 12, order: 1}}>
-            <SectionImg imgStyle={{objectFit: 'contain'}} image={section.image.gatsbyImageData} alt={section.image.title} />
+          <Col xs={{span: 24}} md={{span: 12}} style={{padding: '2rem'}}>
+            <TextRegularMarkdown><ReactMarkdown>{content.secoundCol.secoundCol}</ReactMarkdown></TextRegularMarkdown>
           </Col>
-        </SectionRow>
+        </SectionRowHosting>
       </SiteContent>
-      ))}
 
       <SiteContent background={'white'}>
-        <SectionRow>
+        <SectionRowHosting>
+          <SectionHead>{content.skillsHead}</SectionHead>
           {content.features &&
             content.features.length > 0 &&
             content.features.map((f) => (
@@ -103,9 +85,38 @@ const HostingPage: React.FC<Props> = ({ pageContext, data }: Props) => {
                 <FeatureItem feature={f} />
               </Col>
             ))}
-        </SectionRow>
+        </SectionRowHosting>
       </SiteContent>
 
+      <SiteContent background={'white'}>
+        <SectionRowHosting>
+          <SectionHead>{content.techHead}</SectionHead>
+          {content.technologies &&
+            content.technologies.length > 0 &&
+            content.technologies.map((tech) => (
+              <Col key={tech.title} xs={24} sm={12} md={8}>
+                {tech.title}
+              </Col>
+            ))}
+        </SectionRowHosting>
+      </SiteContent>
+
+      <SiteContent background={'white'}>
+        <SectionRowHosting>
+          <SectionHead>{content.priceHead}</SectionHead>
+          {content.priceCards &&
+            content.priceCards.length > 0 &&
+            content.priceCards.map((priceCard) => (
+              <Col key={priceCard.title} xs={24} sm={12} md={8} style={{padding: '2rem'}}>
+                <PriceCard priceCard={priceCard} />
+              </Col>
+            ))}
+          <Col span={24} style={{ textAlign: 'center', marginTop: '1rem' }}>
+            <TextXsmall>{content.vatText}</TextXsmall>
+          </Col>
+        </SectionRowHosting>
+
+      </SiteContent>
     </SiteLayout>
   );
 };
@@ -117,22 +128,24 @@ export const HostingPageQuery = graphql`
     allContentfulHostingPage(filter: { node_locale: { eq: $locale } }) {
       nodes {
         title
+        keywords
+        seoImage {
+          file {
+            url
+          }
+        }
+        seoDescription {
+          seoDescription
+        }
         headline
         subHeadline
         headImage {
           gatsbyImageData(width: 1920, placeholder: BLURRED)
         }
-        keywords
-        sections {
-          title
-          image {
-            title
-            gatsbyImageData(width: 700, quality: 100, placeholder: BLURRED)
-          }
-          description {
-            description
-          }
-        }
+        infrastructureHead
+        firstCol { firstCol }
+        secoundCol { secoundCol }
+        skillsHead
         features {
           title
           image {
@@ -143,14 +156,30 @@ export const HostingPageQuery = graphql`
             description
           }
         }
-        seoImage {
-          file {
-            url
+        techHead
+        technologies {
+          title
+          image {
+            title
+            gatsbyImageData(width: 300, quality: 100, placeholder: BLURRED)
+          }
+          description {
+            description
           }
         }
-        seoDescription {
-          seoDescription
+        priceHead
+        priceCards {
+          title
+          price
+          currency
+          description {
+            description
+          }
+          btnText
+          features
+          bestValue
         }
+        vatText
       }
     }
   }

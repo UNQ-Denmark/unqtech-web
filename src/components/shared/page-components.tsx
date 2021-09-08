@@ -2,6 +2,7 @@ import { keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
 import { Col, Row } from "antd";
 import {GatsbyImage} from "gatsby-plugin-image";
+import { H2Bold } from "./typography";
 
 export const SlideIn = keyframes`
     from {
@@ -48,6 +49,14 @@ export const Waves = styled.svg`
 export const SectionRow = styled(Row)`
     width: 100%;
     padding: 5rem 0;
+    @media(max-width: 760px) {
+    padding-top: 0;
+  }
+`
+
+export const SectionRowHosting = styled(Row)`
+    width: 100%;
+    padding: 2rem 0;
     @media(max-width: 760px) {
     padding-top: 0;
   }
@@ -116,4 +125,10 @@ export const SectionImg = styled(GatsbyImage)`
     border-radius: 0px;
     max-width: 770px;
   }
+`
+
+export const SectionHead = styled(H2Bold)`
+  font-size: 40px;
+  line-height: 48px;
+  text-align: center;
 `
