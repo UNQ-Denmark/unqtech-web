@@ -149,6 +149,16 @@ const ContactForm: React.FC<Props> = ({locale, contactRef}: Props) => {
               />
             </label>
           </div>
+          <div hidden>
+            <label>
+              <input
+                type="text"
+                name="page"
+                value={isBrowser() ? window.location.pathname : ''}
+                onChange={(e) => setName(e.target.value)}
+              />
+            </label>
+          </div>
           <input
             type="text"
             name="name"
