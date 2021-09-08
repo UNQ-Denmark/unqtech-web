@@ -6,6 +6,7 @@ import { Card, Divider } from 'antd';
 import { TextRegular, TextSmall, TextXsmall } from './typography';
 import { IPriceCard } from './contentful.interface';
 import { BtnBlue } from './button';
+import { isBrowser } from './utils';
 
 const StyledPrice = styled.h4`
   text-align: center;
@@ -46,7 +47,7 @@ type Props = {
 }
 
 const PriceCard: React.FC<Props> = ({priceCard}: Props) => {
-  var element = document.getElementById("contactForm");
+  var element = isBrowser() && document.getElementById("contactForm");
 
   return (
     <StyledCard>
