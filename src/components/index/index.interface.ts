@@ -8,6 +8,9 @@ export interface IHomePage {
         url: string
       }
     }
+    seoDescription: {
+      seoDescription: string;
+    };
     headlineAnimationList: string[]
     refImage: [{gatsbyImageData: IGatsbyImageData, title: string, description: string}]
     sections: ISection[];

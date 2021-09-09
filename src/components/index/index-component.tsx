@@ -193,7 +193,7 @@ const IndexPage: React.FC<Props> = ({ content, locale }: Props) => {
             <TextRegularMarkdown style={{color: 'white'}}><ReactMarkdown>{content.sections[1].description.description}</ReactMarkdown></TextRegularMarkdown>
           </SectionCol>
           <Col xs={{span: 24, order: 1}} md={{span: 12, order: 2}}>
-            <SectionImg image={content.sections[1].image.gatsbyImageData} alt={content.sections[1].image.title} />
+            <SectionImg imgStyle={{objectFit: 'contain'}} image={content.sections[1].image.gatsbyImageData} alt={content.sections[1].image.title} />
           </Col>
         </SectionRow>
       </SiteContent>

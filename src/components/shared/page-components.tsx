@@ -102,6 +102,7 @@ export const HeadTextContainer = styled.div`
    }
 
    @media(max-width: 600px) {
+     top: 100px;
     h1 {
       font-size: 35px;
       line-height: 40px;
@@ -121,7 +122,7 @@ export const SectionImg = styled(GatsbyImage)`
   padding: 1rem;
 
   @media(max-width: 768px) {
-    padding: 0;
+    padding: 1rem;
     border-radius: 0px;
     max-width: 770px;
   }

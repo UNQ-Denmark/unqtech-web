@@ -1,6 +1,5 @@
 import {
   IBlogPage,
-  IBlogPost,
   IBlogPostCard,
 } from '../components/blog/blog.interface';
 import React, { useState } from 'react';
@@ -83,7 +82,7 @@ export default CasesPage;
 
 export const BlogQuery = graphql`
   query {
-    allContentfulBlogPost {
+    allContentfulBlogPost(filter: {node_locale: {eq: "da-DK"} }) {
       nodes {
         slugName
         title

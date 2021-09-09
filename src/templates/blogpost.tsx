@@ -6,9 +6,10 @@ import React from 'react';
 import Seo from '../components/shared/Seo';
 import { graphql } from 'gatsby';
 import { isBrowser } from '../components/shared/utils';
+import { IBlogPost } from '../components/blog/blog.interface';
 
 type Props = {
-  data: { post: {nodes: any}}
+  data: { post: {nodes: IBlogPost[]}}
 }
 
 const BlogPost: React.FC<Props> = ({ data: { post } }: Props) => {
@@ -22,7 +23,12 @@ const BlogPost: React.FC<Props> = ({ data: { post } }: Props) => {
         title={post.nodes[0].title}
         pathname={isBrowser() ? window.location.href : '/'}
         image={post.nodes[0].image.file.url}
-        description={`${post.nodes[0].title}, ${post.nodes[0].type}, ${post.nodes[0].date}, ${post.nodes[0].author.name}`}
+        keywords={post.nodes[0].tags}
+        lang={post.nodes[0].lang}
+        description={`${post.nodes[0].intro.intro}, ${post.nodes[0].type}, ${post.nodes[0].date}, ${post.nodes[0].author.name}`}
+        date={post.nodes[0].date}
+        topic={post.nodes[0].type}
+        author={post.nodes[0].author.name}
       />
       <SiteContent>
       <BlogPostComponent article={post.nodes[0]} />
@@ -34,10 +40,15 @@ export default BlogPost;
 
 export const query = graphql`
   query ($pagePath: String!) {
-    post: allContentfulBlogPost(filter: { slugName: { eq: $pagePath } }) {
+    post: allContentfulBlogPost(filter: { slugName: { eq: $pagePath }, node_locale: {eq: "da-DK"} }) {
         nodes {
-            slugName
             title
+            slugName
+            type
+            date(formatString: "MMMM DD, YYYY")
+            intro {
+              intro
+            }
             content {
               raw
               references {
@@ -65,8 +76,8 @@ export const query = graphql`
                 description
               }
             }
-            date(formatString: "MMMM DD, YYYY")
-            type
+            tags
+            lang
           }
     }
   }

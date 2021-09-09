@@ -15,9 +15,12 @@ interface Props {
   image: string;
   keywords?: string[]
   pathname?: string
+  date?: string
+  topic?: string
+  author?: string
 }
 
-const Seo = ({ title, description, image, meta, lang, keywords, pathname}: Props) => {
+const Seo = ({ title, description, image, meta, lang, keywords, pathname, date, topic, author}: Props) => {
   const { site } = useStaticQuery(query);
 
   const {
@@ -34,12 +37,19 @@ const Seo = ({ title, description, image, meta, lang, keywords, pathname}: Props
     image: image || defaultImage,
     siteUrl: `${siteUrl}`,
     keywords: `${keywords}`,
-    pathname: pathname || ''
+    pathname: pathname || '',
+    date: `${date}`,
+    topic: `${topic}`,
+    author: `${author}`
   };
 
   return (
     <Helmet title={seo.title} titleTemplate={titleTemplate} htmlAttributes={{lang}}>
       <meta name="description" content={seo.description} />
+      {seo.date && <meta property="date" content={seo.date} />}
+      {seo.topic && <meta property="topic" content={seo.topic} />}
+      {seo.author && <meta property="author" content={seo.author} />}
+
       {seo.keywords && <meta property="keywords" content={seo.keywords} />}
 
       {/* Google search engine */}

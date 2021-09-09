@@ -26,6 +26,7 @@ const Index: React.FC<Props> = ({ pageContext, data }: Props) => {
         lang={pageContext.locale}
         image={data.allContentfulHomePage.nodes[0].seoImage.file.url}
         keywords={data.allContentfulHomePage.nodes[0].keywords} 
+        description={data.allContentfulHomePage.nodes[0].seoDescription.seoDescription}
       />
         <IndexPage locale={pageContext.locale} content={data.allContentfulHomePage.nodes[0]} />
     </SiteLayout>
@@ -43,6 +44,9 @@ query HomePageQuery($locale: String) {
             file {
             url
           }
+        }
+        seoDescription {
+          seoDescription
         }
         headlineAnimationList
         refImage {

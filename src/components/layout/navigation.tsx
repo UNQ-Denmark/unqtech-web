@@ -34,6 +34,7 @@ const Logo = styled.img`
   margin-right: 2rem;
   border-radius: 5px;
   cursor: pointer;
+  object-fit: contain;
 
   @media (max-width: 695px) {
     width: 250px;

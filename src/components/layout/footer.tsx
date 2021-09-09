@@ -12,6 +12,10 @@ const StyledFooter = styled(Layout.Footer)`
   width: 100%;
   z-index: 6;
   padding-top: 3rem;
+
+  @media(max-width: 760px) {
+    padding: 3rem 1rem;
+  };
 `;
 
 export const FooterIcon = styled.img`
@@ -31,6 +35,11 @@ const InnerFooter = styled(Layout.Footer)`
   margin: 0 auto;
   height: 100%;
   background: ${theme.colors.greyLight.grey5};
+
+  @media(max-width: 760px) {
+    padding: 0;
+    margin: 0;
+  };
 `;
 
 const TextLink = styled(TextXsmallBold)`
@@ -70,7 +79,7 @@ const FooterComponent: React.FC<Props> = ({locale, contactRef}: Props) => {
 
         </Col>
         <Col xs={20} sm={12} md={{span: 6, offset: 1}}>
-          <TextSmallBold>KONTAKT</TextSmallBold>
+          <TextSmallBold>{locale === 'da-DK' ? 'KONTAKT' : 'CONTACT'}</TextSmallBold>
 
           <TextXsmallBold>Adresse</TextXsmallBold>
           <TextXsmall>Marielundvej 18, 2730 Herlev</TextXsmall>
@@ -88,7 +97,7 @@ const FooterComponent: React.FC<Props> = ({locale, contactRef}: Props) => {
         </Col>
         <Col xs={20} sm={12} md={7}>
         
-          <TextSmallBold>Sociale media</TextSmallBold>
+          <TextSmallBold>{locale === 'da-DK' ? 'SOCIALE MEDIA' : 'SOCIAL MEDIA'}</TextSmallBold>
           <FooterIcon src="/icons/linkedin.svg" onClick={() => window.open('https://www.linkedin.com/company/unqtech-aps')} />
         </Col>
       </Row>

@@ -11,8 +11,8 @@ import styled from '@emotion/styled';
 
 const StyledImg = styled(GatsbyImage)`
   width: 100%;
-  max-height: 480px;
-  margin: 3rem 0;
+  max-height: 450px;
+  margin: 2rem 0;
 `;
 const StyledContentImg = styled(GatsbyImage)`
   max-width: 100%;
@@ -30,7 +30,8 @@ const Container = styled.div`
 `;
 
 const BlogPostContentContainer = styled.div`
-  width: 80%;
+  width: 90%;
+  max-width: 800px;
 `;
 
 const AuthorLogo = styled(GatsbyImage)`
@@ -74,7 +75,7 @@ const BlogPostComponent: React.FC<Props> = ({ article }: Props) => {
         <TextRegularBold style={{ width: '100%' }}>{children}</TextRegularBold>
       ),
       [BLOCKS.PARAGRAPH]: (node: any, children: any) => (
-        <TextSmall>{children}</TextSmall>
+        <TextRegular>{children}</TextRegular>
       ),
       [BLOCKS.EMBEDDED_ASSET]: (node: any) => {
         return (
@@ -82,7 +83,7 @@ const BlogPostComponent: React.FC<Props> = ({ article }: Props) => {
             style={{ margin: '2rem auto' }}
             image={node.data.target.gatsbyImageData}
             alt={article.title}
-            imgStyle={{objectFit: 'contain', borderRadius: '5px'}}
+            imgStyle={{objectFit: 'scale-down', borderRadius: '5px'}}
           />
         );
       },

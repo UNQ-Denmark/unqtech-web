@@ -8,6 +8,11 @@ export const H1Ultra = styled.h1`
     line-height: 116px;
     font-family: "Maax";
     margin-bottom: 1rem;
+
+    @media(max-width: 760px) {
+        font-size: 48px;
+        line-height: 64px;
+    }
 `
 
 export const H1Bold = styled.h1`
@@ -16,6 +21,11 @@ export const H1Bold = styled.h1`
     font-weight: bold;
     line-height: 64px;
     font-family: "Maax";
+
+    @media(max-width: 760px) {
+        font-size: 32px;
+        line-height: 40px;
+    }
 `
 
 export const H1 = styled.h1`
@@ -24,6 +34,11 @@ export const H1 = styled.h1`
     font-weight: 300;
     line-height: 64px;
     font-family: "Maax";
+
+    @media(max-width: 760px) {
+        font-size: 32px;
+        line-height: 40px;
+    }
 `
 
 export const H2Bold = styled.h2`
