@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from '@emotion/styled';
 import { theme } from './theme';
 
@@ -49,6 +49,10 @@ type Props = {
 const PriceCard: React.FC<Props> = ({priceCard}: Props) => {
   var element = isBrowser() && document.getElementById("contactForm");
 
+  useEffect(() => {
+    element = isBrowser() && document.getElementById("contactForm");
+  }, [])
+  
   return (
     <StyledCard>
       {priceCard.bestValue && <StyledValue><TextSmall style={{textAlign: 'center', color: "white", margin: 0}}>Best Value</TextSmall></StyledValue>}
