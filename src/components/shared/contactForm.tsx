@@ -1,9 +1,8 @@
 import styled from '@emotion/styled';
 import { graphql, useStaticQuery } from 'gatsby';
-import { GatsbyImage } from 'gatsby-plugin-image';
 import React, { MutableRefObject } from 'react';
 import { useState } from 'react';
-import { BtnBlack, BtnWhiteOut } from './button';
+import { BtnWhiteOut } from './button';
 import { IContactForm } from './contentful.interface';
 import { UNQSpinner } from './spinner';
 import { theme } from './theme';
