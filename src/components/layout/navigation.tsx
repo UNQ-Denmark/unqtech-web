@@ -220,11 +220,11 @@ const HeaderComponent: React.FC<Props> = ({ locale, component, contactRef }: Pro
                   {locale === 'da-DK' ? 'Webudvikling' : 'Web Development'}
                 </DropDownBtn>
               </Dropdown>
-              <StyledTextLink
+              {/* <StyledTextLink
                 to={locale === 'da-DK' ? '/services/hosting' : '/en/services/hosting'}
               >
                 {'Hosting'}
-              </StyledTextLink>
+              </StyledTextLink> */}
               <StyledTextLink to={locale === 'da-DK' ? '/blog' : '/en/blog'}>
                 {'Blog'}
               </StyledTextLink>

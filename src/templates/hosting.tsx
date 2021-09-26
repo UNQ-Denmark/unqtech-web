@@ -15,6 +15,7 @@ import { Col } from 'antd';
 import {
   H1Bold,
   H2,
+  H3,
   TextRegularMarkdown,
   TextXsmall,
 } from '../components/shared/typography';
@@ -75,7 +76,8 @@ const HostingPage: React.FC<Props> = ({ pageContext, data }: Props) => {
         </SectionRowHosting>
       </SiteContent>
 
-      <SiteContent background={'white'}>
+
+      {/* <SiteContent background={'white'}>
         <SectionRowHosting>
           <SectionHead>{content.skillsHead}</SectionHead>
           {content.features &&
@@ -99,24 +101,26 @@ const HostingPage: React.FC<Props> = ({ pageContext, data }: Props) => {
               </Col>
             ))}
         </SectionRowHosting>
-      </SiteContent>
+      </SiteContent>*/}
 
       <SiteContent background={'white'}>
         <SectionRowHosting>
           <SectionHead>{content.priceHead}</SectionHead>
-          {content.priceCards &&
+          <H3>Coming soon!</H3>
+
+          {/* {content.priceCards &&
             content.priceCards.length > 0 &&
             content.priceCards.map((priceCard) => (
               <Col key={priceCard.title} xs={24} sm={12} md={8} style={{padding: '2rem'}}>
                 <PriceCard priceCard={priceCard} />
               </Col>
-            ))}
-          <Col span={24} style={{ textAlign: 'center', marginTop: '1rem' }}>
+            ))} */}
+          {/* <Col span={24} style={{ textAlign: 'center', marginTop: '1rem' }}>
             <TextXsmall>{content.vatText}</TextXsmall>
-          </Col>
+          </Col> */}
         </SectionRowHosting>
 
-      </SiteContent>
+      </SiteContent> 
     </SiteLayout>
   );
 };

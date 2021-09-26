@@ -67,7 +67,7 @@ const FooterComponent: React.FC<Props> = ({locale, contactRef}: Props) => {
           <TextSmallBold>SERVICES</TextSmallBold>
           <TextLink onClick={() => navigateTo(locale, 'webshop')}>{locale === 'da-DK' ? 'Webshop' : 'E-commerce'}</TextLink>
           <TextLink onClick={() => navigateTo(locale, 'website')}>{'Website'}</TextLink>
-          <TextLink onClick={() => navigateTo(locale, 'hosting')}>{'Hosting'}</TextLink>
+          {/* <TextLink onClick={() => navigateTo(locale, 'hosting')}>{'Hosting'}</TextLink> */}
 
 
         </Col>

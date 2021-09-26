@@ -68,7 +68,7 @@ const Burger: React.FC<Props> = (props: Props) => {
             <Link to={props.locale === 'da-DK' ? '/' : '/en'} onClick={() => props.onClose()}><StyledHead>{props.locale === 'da-DK' ? 'Forside' : 'Home'}</StyledHead></Link>
             <Link to={props.locale === 'da-DK' ? '/services/webshop' : '/en/services/e-commerce'} onClick={() => props.onClose()}><StyledHead>{props.locale === 'da-DK' ? 'Webshop' : 'E-commerce'}</StyledHead></Link>
             <Link to={props.locale === 'da-DK' ? '/services/website' : '/en/services/website'} onClick={() => props.onClose()}><StyledHead>{'Website'}</StyledHead></Link>
-            <Link to={props.locale === 'da-DK' ? '/services/hosting' : '/en/services/hosting'} onClick={() => props.onClose()}><StyledHead>{'Hosting'}</StyledHead></Link>
+            {/* <Link to={props.locale === 'da-DK' ? '/services/hosting' : '/en/services/hosting'} onClick={() => props.onClose()}><StyledHead>{'Hosting'}</StyledHead></Link> */}
             <Link to={props.locale === 'da-DK' ? '/blog' : '/en/blog'} onClick={() => props.onClose()}><StyledHead>Blog</StyledHead></Link>
             <StyledHead onClick={() => executeScroll()}>
             {props.locale === 'da-DK' ? 'Kontakt' : 'Contact'}
