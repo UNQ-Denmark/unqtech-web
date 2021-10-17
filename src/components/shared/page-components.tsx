@@ -49,8 +49,11 @@ export const Waves = styled.svg`
 export const SectionRow = styled(Row)`
     width: 100%;
     padding: 5rem 0;
+    @media(max-width: 1200px) {
+      padding: 0 1rem;
+  }
     @media(max-width: 760px) {
-    padding-top: 0;
+      padding-top: 0;
   }
 `
 
@@ -71,9 +74,11 @@ export const SectionCol = styled(Col)`
   h3 {
     font-size: 40px;
     font-weight: bold;
+    line-height: 44px;
   }
   p {
     font-size: 20px;
+    line-height: 24px;
   }
   @media(max-width: 760px) {
     padding-top: 2rem;
@@ -104,12 +109,12 @@ export const HeadTextContainer = styled.div`
    @media(max-width: 600px) {
      top: 100px;
     h1 {
-      font-size: 35px;
-      line-height: 40px;
+      font-size: 24px;
+      line-height: 30px;
     }
    h2 {
-    font-size: 25px;
-    line-height: 30px;
+      font-size: 20px;
+      line-height: 24px;
    }
   }
 `;
@@ -125,6 +130,7 @@ export const SectionImg = styled(GatsbyImage)`
     padding: 1rem;
     border-radius: 0px;
     max-width: 770px;
+    height: auto;
   }
 `
 

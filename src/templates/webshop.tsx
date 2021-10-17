@@ -13,6 +13,7 @@ import ReactMarkdown from 'react-markdown';
 import MultiLayerWoo from '../components/shared/multiLayer';
 import FeatureItem from '../components/shared/feature';
 import { isBrowser } from '../components/shared/utils';
+import useWindowWidth from '../components/shared/useWindowSize';
 
 interface Props {
   pageContext: PageContext
@@ -23,6 +24,7 @@ interface Props {
 
 const WebshopPage: React.FC<Props> = ({ pageContext, data }: Props) => {
   const content = data.allContentfulWebshopPage.nodes[0]
+  const width = useWindowWidth()
 
   return (
     <SiteLayout
@@ -43,7 +45,7 @@ const WebshopPage: React.FC<Props> = ({ pageContext, data }: Props) => {
           <H1Bold>{content.headline}</H1Bold>
           <H2>{content.subHeadline}</H2>
         </HeadTextContainer>
-      <Waves viewBox="0 0 500 150" preserveAspectRatio="none"><path d="M0.00,49.98 C149.99,150.00 350.85,-49.98 505.46,66.61 L500.00,150.00 L0.00,150.00 Z" style={{stroke: "none", fill: "#fff"}}></path></Waves>
+      <Waves viewBox={width+200 > 700 ? "0 0 500 150" : `0 0 ${width-200} 150`} preserveAspectRatio="none"><path d="M0.00,49.98 C149.99,150.00 350.85,-49.98 505.46,66.61 L500.00,150.00 L0.00,150.00 Z" style={{stroke: "none", fill: "#fff"}}></path></Waves>
       </HeadContainer>
       <SectionRow style={{width: '100%', padding: '0', zIndex: 100, position: 'relative', background: 'white', overflow: 'hidden'}}>
           <Col xs={24} md={12}>

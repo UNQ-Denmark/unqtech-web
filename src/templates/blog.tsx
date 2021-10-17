@@ -18,6 +18,7 @@ import {
 import { H1Ultra, H2 } from '../components/shared/typography';
 import ReactMarkdown from 'react-markdown';
 import styled from '@emotion/styled';
+import useWindowWidth from '../components/shared/useWindowSize';
 
 const HeadTextContainer = styled.div`
   z-index: 5;
@@ -33,6 +34,17 @@ const HeadTextContainer = styled.div`
     h2 {
         color: ${theme.colors.txtLight.white};
     }
+    @media(max-width: 600px) {
+     top: 100px;
+    h1 {
+      font-size: 24px;
+      line-height: 30px;
+    }
+   h2 {
+      font-size: 20px;
+      line-height: 24px;
+   }
+  }
 `;
 
 type Props = {
@@ -44,6 +56,7 @@ type Props = {
 };
 
 const CasesPage: React.FC<Props> = ({ pageContext, data }: Props) => {
+  const width = useWindowWidth()
 
   return (
     <SiteLayout
@@ -61,12 +74,7 @@ const CasesPage: React.FC<Props> = ({ pageContext, data }: Props) => {
             </ReactMarkdown>
           </H2>
         </HeadTextContainer>
-        <Waves viewBox="0 0 500 150" preserveAspectRatio="none">
-          <path
-            d="M0.00,49.98 C149.99,150.00 350.85,-49.98 505.46,66.61 L500.00,150.00 L0.00,150.00 Z"
-            style={{ stroke: 'none', fill: theme.colors.bgLight.grey }}
-          ></path>
-        </Waves>
+        <Waves viewBox={width+200 > 700 ? "0 0 500 150" : `0 0 ${width-200} 150`} preserveAspectRatio="none"><path d="M0.00,49.98 C149.99,150.00 350.85,-49.98 505.46,66.61 L500.00,150.00 L0.00,150.00 Z" style={{stroke: "none", fill: "#fff"}}></path></Waves>
         {/* <HeadImage image={content.headImage.gatsbyImageData} alt={content.title} /> */}
       </HeadContainer>
       <SiteContent background={theme.colors.bgLight.grey}>

@@ -12,6 +12,9 @@ import { theme } from '../shared/theme'
 const DividerContainer = styled(Row)`
     border-bottom: 1px solid black;
     margin: 1rem 0;
+    @media(max-width: 1200px) {
+     padding: 0 1rem;
+    }
 `
 
 type Props = {

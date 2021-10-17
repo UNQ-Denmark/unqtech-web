@@ -16,6 +16,7 @@ import { SectionCol, SectionImg, SectionRow } from '../shared/page-components';
 import ReactMarkdown from 'react-markdown';
 import { Col } from 'antd';
 import FeatureItem from '../shared/feature';
+import useWindowWidth from '../shared/useWindowSize';
 
 
 
@@ -57,6 +58,7 @@ const Waves = styled.svg`
 const ReferenceContainer = styled.div`
 width: 100%;
 display: flex;
+flex-wrap: wrap;
 justify-content: center;
 position: absolute;
 bottom: 350px;
@@ -74,28 +76,10 @@ const RefLogo = styled(GatsbyImage)`
 
   &:hover {
     filter: grayscale(0%);
-
   }
-`
 
-const StyledLink = styled(Link)`
-  color: white;
-  cursor: pointer;
-  font-weight: bold;
-  background:
-     linear-gradient(
-       to bottom, #0797b1 0%,
-       #0797b1 100%
-     );
-  background-position: 0 100%;
-  background-repeat: repeat-x;
-  background-size: 4px 4px;
-  text-decoration: none;
-  transition: background-size .2s;
-
-  &:hover {
-    background-size: 4px 50px;
-    color:white;
+  @media(max-width: 760px) {
+    margin: 1rem;
   }
 
 `
@@ -110,6 +94,7 @@ const IndexPage: React.FC<Props> = ({ content, locale }: Props) => {
   const typed = React.useRef<any>();
   const [vantaEffect, setVantaEffect] = useState<any>(0);
   const headRef = useRef<any>(null);
+  const width = useWindowWidth();
 
   useEffect(() => {
     if (!vantaEffect) {
@@ -153,7 +138,7 @@ const IndexPage: React.FC<Props> = ({ content, locale }: Props) => {
   return (
     <div>
       <HeadContainer ref={headRef}>
-      <Waves viewBox="0 0 500 150" preserveAspectRatio="none"><path d="M0.00,49.98 C149.99,150.00 350.85,-49.98 505.46,66.61 L500.00,150.00 L0.00,150.00 Z" style={{stroke: "none", fill: "#fff"}}></path></Waves>
+      <Waves viewBox={width+200 > 700 ? "0 0 500 150" : `0 0 ${width-200} 150`} preserveAspectRatio="none"><path d="M0.00,49.98 C149.99,150.00 350.85,-49.98 505.46,66.61 L500.00,150.00 L0.00,150.00 Z" style={{stroke: "none", fill: "#fff"}}></path></Waves>
         <AnnimatedHead>
         <H1Ultra style={{textAlign: 'center', color: theme.colors.txtLight.white}}>UNQTech</H1Ultra>
           <H1
@@ -176,12 +161,12 @@ const IndexPage: React.FC<Props> = ({ content, locale }: Props) => {
         </ReferenceContainer>
       </HeadContainer>
       <SiteContent background={'white'}>
-        <SectionRow style={{paddingTop: '0'}}>
+        <SectionRow style={{paddingTop: '0'}} justify="center">
           <SectionCol xs={{span: 24, order: 2}} md={{span: 12, order: 2}}>
             <H3>{content.sections[0].title}</H3>
             <TextRegularMarkdown><ReactMarkdown>{content.sections[0].description.description}</ReactMarkdown></TextRegularMarkdown>
           </SectionCol>
-          <Col xs={{span: 24, order: 1}} md={{span: 12, order: 1}}>
+          <Col xs={{span: 18, order: 1}} md={{span: 12, order: 1}}>
             <SectionImg imgStyle={{objectFit: 'contain'}} image={content.sections[0].image.gatsbyImageData} alt={content.sections[0].image.title} />
           </Col>
         </SectionRow>
