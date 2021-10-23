@@ -45,7 +45,7 @@ const WebshopPage: React.FC<Props> = ({ pageContext, data }: Props) => {
           <H1Bold>{content.headline}</H1Bold>
           <H2>{content.subHeadline}</H2>
         </HeadTextContainer>
-      <Waves viewBox={width+200 > 700 ? "0 0 500 150" : `0 0 ${width-200} 150`} preserveAspectRatio="none"><path d="M0.00,49.98 C149.99,150.00 350.85,-49.98 505.46,66.61 L500.00,150.00 L0.00,150.00 Z" style={{stroke: "none", fill: "#fff"}}></path></Waves>
+      <Waves viewBox={width > 10 && width < 700 ? `0 0 ${width-200} 150` : "0 0 500 150"} preserveAspectRatio="none"><path d="M0.00,49.98 C149.99,150.00 350.85,-49.98 505.46,66.61 L500.00,150.00 L0.00,150.00 Z" style={{stroke: "none", fill: "#fff"}}></path></Waves>
       </HeadContainer>
       <SectionRow style={{width: '100%', padding: '0', zIndex: 100, position: 'relative', background: 'white', overflow: 'hidden'}}>
           <Col xs={24} md={12}>

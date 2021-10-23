@@ -138,7 +138,7 @@ const IndexPage: React.FC<Props> = ({ content, locale }: Props) => {
   return (
     <div>
       <HeadContainer ref={headRef}>
-      <Waves viewBox={width+200 > 700 ? "0 0 500 150" : `0 0 ${width-200} 150`} preserveAspectRatio="none"><path d="M0.00,49.98 C149.99,150.00 350.85,-49.98 505.46,66.61 L500.00,150.00 L0.00,150.00 Z" style={{stroke: "none", fill: "#fff"}}></path></Waves>
+      <Waves viewBox={width > 10 && width < 700 ? `0 0 ${width-200} 150` : "0 0 500 150"} preserveAspectRatio="none"><path d="M0.00,49.98 C149.99,150.00 350.85,-49.98 505.46,66.61 L500.00,150.00 L0.00,150.00 Z" style={{stroke: "none", fill: "#fff"}}></path></Waves>
         <AnnimatedHead>
         <H1Ultra style={{textAlign: 'center', color: theme.colors.txtLight.white}}>UNQTech</H1Ultra>
           <H1
@@ -162,11 +162,11 @@ const IndexPage: React.FC<Props> = ({ content, locale }: Props) => {
       </HeadContainer>
       <SiteContent background={'white'}>
         <SectionRow style={{paddingTop: '0'}} justify="center">
-          <SectionCol xs={{span: 24, order: 2}} md={{span: 12, order: 2}}>
+          <SectionCol xs={{span: 24, order: 2, offset: 0}} md={{span: 10, order: 2, offset: 1}}>
             <H3>{content.sections[0].title}</H3>
             <TextRegularMarkdown><ReactMarkdown>{content.sections[0].description.description}</ReactMarkdown></TextRegularMarkdown>
           </SectionCol>
-          <Col xs={{span: 18, order: 1}} md={{span: 12, order: 1}}>
+          <Col xs={{span: 18, order: 1}} md={{span: 10, order: 1}}>
             <SectionImg imgStyle={{objectFit: 'contain'}} image={content.sections[0].image.gatsbyImageData} alt={content.sections[0].image.title} />
           </Col>
         </SectionRow>
