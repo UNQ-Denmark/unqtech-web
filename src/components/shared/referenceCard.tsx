@@ -88,6 +88,11 @@ const Header = styled.div`
 const Img = styled(GatsbyImage)`
     height: 100%;
     width: 100%;
+    filter: grayscale(100%);
+    transition: .2s ease;
+    &:hover {
+        filter: grayscale(0%);
+    }
     `
 
 
