@@ -5,30 +5,29 @@ import React, { useEffect, useRef, useState } from 'react';
 
 import { GatsbyImage } from 'gatsby-plugin-image';
 import { IHomePage } from './index.interface';
-import { Link } from 'gatsby';
 import { SiteContent } from '../layout/layout';
 import Typed from 'typed.js';
 // @ts-ignore
-import WAVES from 'vanta/dist/vanta.waves.min.js';
 import styled from '@emotion/styled';
 import { theme } from '../shared/theme';
 import { SectionCol, SectionImg, SectionRow } from '../shared/page-components';
 import ReactMarkdown from 'react-markdown';
-import { Col } from 'antd';
+import { Col, Row } from 'antd';
 import FeatureItem from '../shared/feature';
 import useWindowWidth from '../shared/useWindowSize';
-
+import RefCard from '../shared/referenceCard';
 
 
 
 const HeadContainer = styled.div`
   width: 100%;
-  height: calc(100vh + 250px);
+  height: calc(500px + 250px);
   position: relative;
   margin-top: -80px;
   /* border-radius: 50% / 0 0 250px 250px; */
   overflow: hidden;
-  background: black;
+  background: rgb(175,237,231);
+background: linear-gradient(90deg, rgba(175,237,231,1) 35%, rgba(46,196,182,1) 100%);
   `;
 
 const HeadImage = styled(GatsbyImage)`
@@ -41,11 +40,12 @@ const HeadImage = styled(GatsbyImage)`
 `;
 const AnnimatedHead = styled.div`
   width: 100%;
+  max-width: 1200px;
+  margin: auto;
   margin-top: 150px;
-  height: 300px;
-  position: absolute;
   z-index: 2;
   padding: 0 3rem;
+  
 `;
 
 const Waves = styled.svg`
@@ -55,20 +55,20 @@ const Waves = styled.svg`
   width: 100%;
 `
 
-const ReferenceContainer = styled.div`
-width: 100%;
-display: flex;
-flex-wrap: wrap;
-justify-content: center;
-position: absolute;
-bottom: 350px;
+const RefLogoContainer = styled.div`
+  max-width: 300px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
 `
 
+
 const RefLogo = styled(GatsbyImage)`
-  max-height: 50px;
-  max-width: 200px;
+max-width: 250px;
+max-height: 100%;
   margin: 0 1rem;
-  width: auto;
   height: auto;
   filter: grayscale(100%);
   transition: filter .2s ease-in;
@@ -80,6 +80,8 @@ const RefLogo = styled(GatsbyImage)`
 
   @media(max-width: 760px) {
     margin: 1rem;
+    filter: grayscale(0%);
+
   }
 
 `
@@ -92,35 +94,10 @@ type Props = {
 const IndexPage: React.FC<Props> = ({ content, locale }: Props) => {
   const el = React.useRef<any>();
   const typed = React.useRef<any>();
-  const [vantaEffect, setVantaEffect] = useState<any>(0);
   const headRef = useRef<any>(null);
   const width = useWindowWidth();
 
-  useEffect(() => {
-    if (!vantaEffect) {
-      setVantaEffect(
-        WAVES({
-          el: headRef.current,
-          mouseControls: true,
-          touchControls: true,
-          gyroControls: false,
-          minHeight: '200.00',
-          minWidth: '200.00',
-          scale: '1.00',
-          scaleMobile: '1.00',
-          color: '#000000',
-          shininess: '25.00',
-          zoom: '1.12',
-          waveSpeed: '1.05',
-          waveHeight: '8.00',
-          THREE: THREE,
-        }),
-      );
-    }
-    return () => {
-      if (vantaEffect) vantaEffect.destroy();
-    };
-  }, [vantaEffect]);
+  
   React.useEffect(() => {
     const options = {
       strings: content.headlineAnimationList,
@@ -140,7 +117,9 @@ const IndexPage: React.FC<Props> = ({ content, locale }: Props) => {
       <HeadContainer ref={headRef}>
       <Waves viewBox={width > 10 && width < 700 ? `0 0 ${width-200} 150` : "0 0 500 150"} preserveAspectRatio="none"><path d="M0.00,49.98 C149.99,150.00 350.85,-49.98 505.46,66.61 L500.00,150.00 L0.00,150.00 Z" style={{stroke: "none", fill: "#fff"}}></path></Waves>
         <AnnimatedHead>
-        <H1Ultra style={{textAlign: 'center', color: theme.colors.txtLight.white}}>UNQTech</H1Ultra>
+          <Row justify='space-between' align='middle'>
+            <Col span={12}>
+              <H1Ultra style={{textAlign: 'center', color: theme.colors.txtLight.black}}>UNQTech</H1Ultra>
           <H1
             style={{
               textAlign: 'center',
@@ -153,12 +132,12 @@ const IndexPage: React.FC<Props> = ({ content, locale }: Props) => {
               ref={el}
             />
           </H1>
+            </Col>
+            <Col span={10}>
+
+            </Col>
+          </Row>
         </AnnimatedHead>
-        <ReferenceContainer>
-          {content.refImage.length > 0 && content.refImage.map((img, key )=> (
-            <RefLogo key={key} objectFit={'contain'} image={img.gatsbyImageData} alt={img.title} onClick={() => window.open(img.description, '_blank')?.focus()} />
-          ))}
-        </ReferenceContainer>
       </HeadContainer>
       <SiteContent background={'white'}>
         <SectionRow style={{paddingTop: '0'}} justify="center">
@@ -182,7 +161,29 @@ const IndexPage: React.FC<Props> = ({ content, locale }: Props) => {
           </Col>
         </SectionRow>
       </SiteContent>
+     
       <SiteContent background={'white'}>
+       <SectionRow>
+       {content.features && content.features.length > 0 && content.features.map(f => (
+         <Col key={f.title} xs={24} sm={12} md={8}>
+           <FeatureItem feature={f} />
+         </Col>
+       ))}
+       </SectionRow>
+      </SiteContent>
+      <SiteContent background={theme.colors.gradients.darkblueBg} backgrondImg={theme.colors.gradients.lightGreenGradient}>
+        <Row style={{width: '100%', padding: '3rem'}} gutter={[40, 40]} justify={'center'} align={'middle'}>
+        <H3 style={{color: theme.colors.txtLight.white, fontSize: '30px', textAlign: 'center'}} >Referencer</H3>
+        {content.refImage.length > 0 && content.refImage.map((img, key )=> (
+         
+          <Col xs={24} sm={12} md={12} lg={10} key={key}>
+                      <RefCard refImage={img} key={key} />
+
+            </Col>
+            ))}
+        </Row>
+        </SiteContent>
+        <SiteContent background={'white'}>
         <SectionRow>
           <SectionCol xs={{span: 24, order: 2}} md={{span: 12, order: 2}}>
             <H3>{content.sections[2].title}</H3>
@@ -192,15 +193,6 @@ const IndexPage: React.FC<Props> = ({ content, locale }: Props) => {
             <SectionImg imgStyle={{objectFit: 'contain'}} image={content.sections[2].image.gatsbyImageData} alt={content.sections[2].image.title} />
           </Col>
         </SectionRow>
-      </SiteContent>
-      <SiteContent background={'white'}>
-       <SectionRow>
-       {content.features && content.features.length > 0 && content.features.map(f => (
-         <Col key={f.title} xs={24} sm={12} md={8}>
-           <FeatureItem feature={f} />
-         </Col>
-       ))}
-       </SectionRow>
       </SiteContent>
     </div>
   );

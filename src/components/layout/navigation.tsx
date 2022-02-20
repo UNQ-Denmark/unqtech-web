@@ -228,6 +228,9 @@ const HeaderComponent: React.FC<Props> = ({ locale, component, contactRef }: Pro
               <StyledTextLink to={locale === 'da-DK' ? '/blog' : '/en/blog'}>
                 {'Blog'}
               </StyledTextLink>
+              <StyledTextLink to={locale === 'da-DK' ? '/integrationer' : '/en/integrations'}>
+              {locale === 'da-DK' ? 'Data integration' : 'Data Integrations'}
+              </StyledTextLink>
           <ContactBtn onClick={executeScroll}>
             {locale === 'da-DK' ? 'Kontakt' : 'Contact'}
           </ContactBtn>

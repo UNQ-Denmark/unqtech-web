@@ -52,13 +52,13 @@ query HomePageQuery($locale: String) {
         refImage {
           title
           description
-          gatsbyImageData(width: 400, quality: 100, placeholder: BLURRED)
+          gatsbyImageData(width: 400, quality: 100, placeholder: BLURRED, formats: WEBP)
         }
         sections {
         title
         image {
           title
-          gatsbyImageData(width: 700, quality: 100, placeholder: BLURRED)
+          gatsbyImageData(width: 700, quality: 100, placeholder: BLURRED, formats: WEBP)
         }
         description {
           description
@@ -70,7 +70,7 @@ query HomePageQuery($locale: String) {
         btnLink
         image {
           title
-          gatsbyImageData(width: 300, quality: 100, placeholder: BLURRED)
+          gatsbyImageData(width: 300, quality: 100, placeholder: BLURRED, formats: WEBP)
         }
         description {
           description

@@ -16,6 +16,10 @@
                 "slug": "/blog"
             },
             {
+                "componentName": "integration",
+                "slug": "/integrationer"
+            },
+            {
                 "componentName": "website",
                 "slug": "/services/website"
             },
@@ -48,6 +52,10 @@
             {
                 "componentName": "blog",
                 "slug": "/blog"
+            },
+            {
+                "componentName": "integration",
+                "slug": "/integrations"
             },
             {
                 "componentName": "website",

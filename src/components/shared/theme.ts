@@ -47,7 +47,8 @@ enum gradients {
     darkgreenBg = '#000000',
     grey = 'linear-gradient(135deg, #2d3436 0%, #d3d3d3 100%)',
     greyBg = '#2d3436',
-    blueGradient = "linear-gradient(85.79deg, #2F80ED 0%, #56CCF2 100%)"
+    blueGradient = "linear-gradient(85.79deg, #2F80ED 0%, #56CCF2 100%)",
+    lightGreenGradient = "linear-gradient(274deg, rgba(170,205,202,1) 36%, rgba(18,83,77,1) 100%)"
 }
 
 const colors = {
