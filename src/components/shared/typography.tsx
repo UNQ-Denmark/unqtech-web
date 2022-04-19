@@ -15,6 +15,24 @@ export const H1Ultra = styled.h1`
     }
 `
 
+export const H1UltraGradient = styled.h1`
+    width: 100%;
+    font-weight: 500;
+    font-size: 96px;
+    line-height: 116px;
+    font-family: "Maax";
+    margin-bottom: 1rem;
+    background: ${theme.colors.gradients.lightGreenGradient};
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    @media(max-width: 760px) {
+        font-size: 48px;
+        line-height: 64px;
+    }
+`
+
 export const H1Bold = styled.h1`
     width: 100%;
     font-size: 48px;
@@ -81,6 +99,7 @@ export const TextBlueGradientBold = styled.p`
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 `
+
 export const TextRegularBold = styled.p`
     font-size: 16px;
     font-weight: bold;

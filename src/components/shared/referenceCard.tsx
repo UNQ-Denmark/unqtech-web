@@ -1,10 +1,12 @@
 import styled from '@emotion/styled'
 import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image'
 import React from 'react'
+import { theme } from './theme'
 
 const Container = styled.div`
     height: 300px;
     position: relative;
+    box-shadow: ${theme.effects.shadow02};
 
     &.box {
   margin: auto;
@@ -79,11 +81,13 @@ const Header = styled.div`
         -webkit-text-fill-color: transparent;
         margin: 0;
         padding: 12px;
+
+        @media(max-width: 760px) {
+          font-size: 24px;
+        }
     }
 
 `
-
-
 
 const Img = styled(GatsbyImage)`
     height: 100%;

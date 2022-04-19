@@ -24,8 +24,7 @@ const BtnContainer = styled.div`
     position: absolute;
     bottom: 0;
     width: 50%;
-    left: 0;
-    margin-left: 1rem;
+    margin: auto;
 `
 
 type Props = {
@@ -56,7 +55,7 @@ const FeatureItem: React.FC<Props> = ({feature}: Props) => {
             {feature.hasBtn && feature.btnLink && 
                 <BtnContainer>
                     <BtnBlue onClick={() => navigate(feature.btnLink || '/')}>
-                        Læs mere
+                        Read more
                     </BtnBlue>
                 </BtnContainer>
             }

@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 
-import { H1, H1Ultra, H3, TextRegularMarkdown } from '../shared/typography';
+import { H1, H1Ultra, H1UltraGradient, H3, TextRegularMarkdown } from '../shared/typography';
 import React, { useEffect, useRef, useState } from 'react';
 
 import { GatsbyImage } from 'gatsby-plugin-image';
@@ -26,8 +26,7 @@ const HeadContainer = styled.div`
   margin-top: -80px;
   /* border-radius: 50% / 0 0 250px 250px; */
   overflow: hidden;
-  background: rgb(175,237,231);
-background: linear-gradient(90deg, rgba(175,237,231,1) 35%, rgba(46,196,182,1) 100%);
+  background: black;
   `;
 
 const HeadImage = styled(GatsbyImage)`
@@ -119,7 +118,7 @@ const IndexPage: React.FC<Props> = ({ content, locale }: Props) => {
         <AnnimatedHead>
           <Row justify='space-between' align='middle'>
             <Col span={12}>
-              <H1Ultra style={{textAlign: 'center', color: theme.colors.txtLight.black}}>UNQTech</H1Ultra>
+              <H1UltraGradient style={{textAlign: 'center', color: theme.colors.txtLight.black}}>UNQTech</H1UltraGradient>
           <H1
             style={{
               textAlign: 'center',
