@@ -103,7 +103,7 @@ const IndexPage: React.FC<Props> = ({ content, locale }: Props) => {
                 {locale === 'da-DK' ? 'Digitalt IT-konsulentbureau' : 'Digital IT consulting agency'}
                 </H1UltraGradient>
           <H2Head>
-            {locale === 'da-DK' ? 'Specialiseret rådgivning inden for softwareudvikling, data integration and DevOps' 
+            {locale === 'da-DK' ? 'Specialiseret rådgivning inden for softwareudvikling, data integration og DevOps' 
             : 'Specialized consultancy within software development, data integration and DevOps'} 
           </H2Head>
             </Col>
