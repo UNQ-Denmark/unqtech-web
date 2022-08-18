@@ -36,7 +36,6 @@ const FeatureItem: React.FC<Props> = ({feature}: Props) => {
     const Container = styled.div`
     width: calc(100% - 4rem);
     margin: 2rem;
-    height: ${feature.hasBtn ? '480px' : '350px'};
     display: flex;
     justify-content: center;
     flex-wrap: wrap;

@@ -150,26 +150,6 @@ const HeaderComponent: React.FC<Props> = ({ locale, component, contactRef }: Pro
 
   const executeScroll = () => contactRef.current && contactRef.current.scrollIntoView({behavior: 'smooth', block: 'start'})    
 
-  const menu = (
-    <Menu >
-      <Menu.Item key={1}>
-        <StyledDropDownLink
-          to={
-            locale === 'da-DK' ? '/services/webshop' : '/en/services/e-commerce'
-          }
-        >
-          {locale === 'da-DK' ? 'Webshop' : 'E-commerce'}
-        </StyledDropDownLink>
-      </Menu.Item>
-      <Menu.Item key={2}>
-        <StyledDropDownLink
-          to={locale === 'da-DK' ? '/services/website' : '/en/services/website'}
-        >
-          {'Website'}
-        </StyledDropDownLink>
-      </Menu.Item>
-    </Menu>
-  );
 
   return (
     <div
@@ -192,12 +172,6 @@ const HeaderComponent: React.FC<Props> = ({ locale, component, contactRef }: Pro
             : 'transparent',
       }}
     >
-      <Burger
-        locale={locale}
-        isOpen={showBurger}
-        onClose={() => setShowBurger(!showBurger)}
-        contactRef={contactRef}
-      />
       <InnerHeader>
         <HeaderContent>
           <Logo
@@ -212,35 +186,21 @@ const HeaderComponent: React.FC<Props> = ({ locale, component, contactRef }: Pro
             height={316}
           />
         </HeaderContent>
-        <HeaderContent style={{ justifyContent: 'flex-end' }}>
-          {width > 900 && (
+        <HeaderContent style={{ justifyContent: 'flex-end', marginRight: '2rem' }}>
+          {width > 600 && (
             <>
-              <Dropdown overlay={menu} placement="bottomCenter" arrow overlayStyle={{width: '200px'}}>
-                <DropDownBtn>
-                  {locale === 'da-DK' ? 'Webudvikling' : 'Web Development'}
-                </DropDownBtn>
-              </Dropdown>
-              {/* <StyledTextLink
-                to={locale === 'da-DK' ? '/services/hosting' : '/en/services/hosting'}
-              >
-                {'Hosting'}
-              </StyledTextLink> */}
-              <StyledTextLink to={locale === 'da-DK' ? '/blog' : '/en/blog'}>
-                {'Blog'}
-              </StyledTextLink>
-              <StyledTextLink to={locale === 'da-DK' ? '/integrationer' : '/en/integrations'}>
-              {locale === 'da-DK' ? 'Data integration' : 'Data Integrations'}
-              </StyledTextLink>
           <ContactBtn onClick={executeScroll}>
             {locale === 'da-DK' ? 'Kontakt' : 'Contact'}
           </ContactBtn>
+          </>
+        )}
 
           <LangLink
             color={
               scrollPos > 1 || showBurger
                 ? 'black'
                 : 'white'
-            }
+              }
             aria-current={locale === 'da-DK'}
             onClick={() => navigateTo('da-DK', component)}
           >
@@ -268,15 +228,6 @@ const HeaderComponent: React.FC<Props> = ({ locale, component, contactRef }: Pro
           >
             EN
           </LangLink>
-            </>
-          )}
-
-          <Icons
-            src={showBurger ? '/icons/close.svg' : '/icons/menu.svg'}
-            onClick={() => setShowBurger(!showBurger)}
-            alt="Menu mansted wine"
-            style={{ marginLeft: '2rem' }}
-          />
         </HeaderContent>
       </InnerHeader>
     </div>

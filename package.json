@@ -31,7 +31,10 @@
     "react-helmet": "^6.1.0",
     "react-layered-image": "^2.0.6",
     "react-markdown": "^6.0.2",
+    "react-particles": "^2.2.2",
     "three": "^0.124.0",
+    "tsparticles": "^2.2.2",
+    "tsparticles-engine": "^2.2.2",
     "typed.js": "^2.0.12",
     "vanta": "^0.5.21"
   },

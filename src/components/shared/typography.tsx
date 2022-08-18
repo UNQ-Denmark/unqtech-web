@@ -17,19 +17,18 @@ export const H1Ultra = styled.h1`
 
 export const H1UltraGradient = styled.h1`
     width: 100%;
-    font-weight: 500;
-    font-size: 96px;
-    line-height: 116px;
+    font-weight: 800;
+    font-size: 26px;
+    line-height: 30px;
     font-family: "Maax";
     margin-bottom: 1rem;
     background: ${theme.colors.gradients.lightGreenGradient};
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-
     @media(max-width: 760px) {
-        font-size: 48px;
-        line-height: 64px;
+        font-size: 22px;
+        line-height: 24px;
     }
 `
 
@@ -72,6 +71,15 @@ export const H2 = styled.h2`
     font-weight: 300;
     line-height: 40px;
     font-family: "Maax";
+`
+
+export const H2Head = styled(H2)`
+    color: white;
+    font-weight: 500;
+    @media(max-width: 760px) {
+        font-size: 26px;
+        line-height: 30px;
+    }
 `
 
 export const H3Bold = styled.h3`

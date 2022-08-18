@@ -10,30 +10,6 @@
             {
                 "componentName": "index",
                 "slug": "/"
-            },
-            {
-                "componentName": "blog",
-                "slug": "/blog"
-            },
-            {
-                "componentName": "integration",
-                "slug": "/integrationer"
-            },
-            {
-                "componentName": "website",
-                "slug": "/services/website"
-            },
-            {
-                "componentName": "webshop",
-                "slug": "/services/webshop"
-            },
-            {
-                "componentName": "hosting",
-                "slug": "/services/hosting"
-            },
-            {
-                "componentName": "legal",
-                "slug": "/Privatlivspolitik"
             }
         ]
     },
@@ -48,30 +24,6 @@
             {
                 "componentName": "index",
                 "slug": "/"
-            },
-            {
-                "componentName": "blog",
-                "slug": "/blog"
-            },
-            {
-                "componentName": "integration",
-                "slug": "/integrations"
-            },
-            {
-                "componentName": "website",
-                "slug": "/services/website"
-            },
-            {
-                "componentName": "webshop",
-                "slug": "/services/e-commerce"
-            },
-            {
-                "componentName": "hosting",
-                "slug": "/services/hosting"
-            },
-            {
-                "componentName": "legal",
-                "slug": "/privacy-policy"
             }
         ]
     }

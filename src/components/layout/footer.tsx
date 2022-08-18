@@ -63,21 +63,6 @@ const FooterComponent: React.FC<Props> = ({locale, contactRef}: Props) => {
     <StyledFooter style={{background: theme.colors.bgLight.grey}}>
       <InnerFooter style={{background: theme.colors.bgLight.grey }}>
       <Row gutter={24} style={{ marginBottom: '3rem', background: theme.colors.bgLight.grey, width: '100%' }} justify='center' >
-        <Col xs={20} sm={12} md={5}>
-          <TextSmallBold>SERVICES</TextSmallBold>
-          <TextLink onClick={() => navigateTo(locale, 'webshop')}>{locale === 'da-DK' ? 'Webshop' : 'E-commerce'}</TextLink>
-          <TextLink onClick={() => navigateTo(locale, 'website')}>{'Website'}</TextLink>
-          {/* <TextLink onClick={() => navigateTo(locale, 'hosting')}>{'Hosting'}</TextLink> */}
-
-
-        </Col>
-        <Col xs={20} sm={12} md={5}>
-          <TextSmallBold>INFORMATION</TextSmallBold>
-          <TextLink onClick={() => navigateTo(locale, 'blog')}>{'Blog'}</TextLink>
-          <TextLink onClick={() => navigateTo(locale, 'legal')}>{locale === 'da-DK' ? 'Privatlivspolitik' : 'Privacy Policy'}</TextLink>
-          
-
-        </Col>
         <Col xs={20} sm={12} md={{span: 6, offset: 1}}>
           <TextSmallBold>{locale === 'da-DK' ? 'KONTAKT' : 'CONTACT'}</TextSmallBold>
 
@@ -106,7 +91,7 @@ const FooterComponent: React.FC<Props> = ({locale, contactRef}: Props) => {
     <StyledFooter>
       <InnerFooter style={{marginTop: 0}}>
         <Row justify="center">
-          <TextSmallBold>{`© 2021 UNQTech ApS - All rights reserved`}</TextSmallBold>
+          <TextSmallBold>{`© 2022 UNQTech ApS - All rights reserved`}</TextSmallBold>
         </Row>
       </InnerFooter>
     </StyledFooter>

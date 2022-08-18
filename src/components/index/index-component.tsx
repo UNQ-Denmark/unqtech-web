@@ -1,12 +1,10 @@
-import * as THREE from 'three';
 
-import { H1, H1Ultra, H1UltraGradient, H3, TextRegularMarkdown } from '../shared/typography';
-import React, { useEffect, useRef, useState } from 'react';
+import { H1UltraGradient, H2, H2Head, H3, TextRegularMarkdown } from '../shared/typography';
+import React, { useRef } from 'react';
 
 import { GatsbyImage } from 'gatsby-plugin-image';
 import { IHomePage } from './index.interface';
 import { SiteContent } from '../layout/layout';
-import Typed from 'typed.js';
 // @ts-ignore
 import styled from '@emotion/styled';
 import { theme } from '../shared/theme';
@@ -15,7 +13,7 @@ import ReactMarkdown from 'react-markdown';
 import { Col, Row } from 'antd';
 import FeatureItem from '../shared/feature';
 import useWindowWidth from '../shared/useWindowSize';
-import RefCard from '../shared/referenceCard';
+import { ParticlesContainer } from './partikel-container';
 
 
 
@@ -26,7 +24,7 @@ const HeadContainer = styled.div`
   margin-top: -80px;
   /* border-radius: 50% / 0 0 250px 250px; */
   overflow: hidden;
-  background: black;
+  background: #041631;
   `;
 
 const HeadImage = styled(GatsbyImage)`
@@ -91,25 +89,8 @@ type Props = {
 };
 
 const IndexPage: React.FC<Props> = ({ content, locale }: Props) => {
-  const el = React.useRef<any>();
-  const typed = React.useRef<any>();
   const headRef = useRef<any>(null);
   const width = useWindowWidth();
-
-  
-  React.useEffect(() => {
-    const options = {
-      strings: content.headlineAnimationList,
-      typeSpeed: 50,
-      backSpeed: 50,
-      loop: true,
-    };
-    typed.current = new Typed(el.current, options);
-
-    return () => {
-      typed.current.destroy();
-    };
-  }, []);
 
   return (
     <div>
@@ -117,27 +98,23 @@ const IndexPage: React.FC<Props> = ({ content, locale }: Props) => {
       <Waves viewBox={width > 10 && width < 700 ? `0 0 ${width-200} 150` : "0 0 500 150"} preserveAspectRatio="none"><path d="M0.00,49.98 C149.99,150.00 350.85,-49.98 505.46,66.61 L500.00,150.00 L0.00,150.00 Z" style={{stroke: "none", fill: "#fff"}}></path></Waves>
         <AnnimatedHead>
           <Row justify='space-between' align='middle'>
-            <Col span={12}>
-              <H1UltraGradient style={{textAlign: 'center', color: theme.colors.txtLight.black}}>UNQTech</H1UltraGradient>
-          <H1
-            style={{
-              textAlign: 'center',
-              fontWeight: 300,
-              color: theme.colors.txtLight.white,
-            }}
-          >
-            <span
-              style={{ whiteSpace: 'pre', width: 'fit-content' }}
-              ref={el}
-            />
-          </H1>
+            <Col sm={22} md={12}>
+              <H1UltraGradient style={{color: theme.colors.txtLight.black}}>
+                {locale === 'da-DK' ? 'Digitalt IT-konsulentbureau' : 'Digital IT consulting agency'}
+                </H1UltraGradient>
+          <H2Head>
+            {locale === 'da-DK' ? 'Specialiseret rådgivning inden for softwareudvikling, data integration and DevOps' 
+            : 'Specialized consultancy within software development, data integration and DevOps'} 
+          </H2Head>
             </Col>
             <Col span={10}>
 
             </Col>
           </Row>
         </AnnimatedHead>
+          <ParticlesContainer  />
       </HeadContainer>
+
       <SiteContent background={'white'}>
         <SectionRow style={{paddingTop: '0'}} justify="center">
           <SectionCol xs={{span: 24, order: 2, offset: 0}} md={{span: 10, order: 2, offset: 1}}>
@@ -149,49 +126,17 @@ const IndexPage: React.FC<Props> = ({ content, locale }: Props) => {
           </Col>
         </SectionRow>
       </SiteContent>
-      <SiteContent background={theme.colors.gradients.darkblueBg} backgrondImg={theme.colors.gradients.darkblue}>
-        <SectionRow>
-          <SectionCol xs={{span: 24, order: 2}} md={{span: 12, order: 1}}>
-            <H3 style={{color: 'white'}}>{content.sections[1].title}</H3>
-            <TextRegularMarkdown style={{color: 'white'}}><ReactMarkdown>{content.sections[1].description.description}</ReactMarkdown></TextRegularMarkdown>
-          </SectionCol>
-          <Col xs={{span: 24, order: 1}} md={{span: 12, order: 2}}>
-            <SectionImg imgStyle={{objectFit: 'contain'}} image={content.sections[1].image.gatsbyImageData} alt={content.sections[1].image.title} />
-          </Col>
-        </SectionRow>
-      </SiteContent>
      
       <SiteContent background={'white'}>
-       <SectionRow>
+        <H3 style={{textAlign: 'center', fontWeight: 500, margin: 0}}>{locale === 'da-DK' ? 'Vores Services' : 'Our Services'}</H3>
+        <div style={{height: '4px', background: '#041631', width: '150px', margin: 'auto'}}></div>
+       <SectionRow style={{marginBottom: '4rem'}}>
        {content.features && content.features.length > 0 && content.features.map(f => (
-         <Col key={f.title} xs={24} sm={12} md={8}>
+         <Col key={f.title} xs={24} sm={12} md={12} lg={8}>
            <FeatureItem feature={f} />
          </Col>
        ))}
        </SectionRow>
-      </SiteContent>
-      <SiteContent background={theme.colors.gradients.darkblueBg} backgrondImg={theme.colors.gradients.lightGreenGradient}>
-        <Row style={{width: '100%', padding: '3rem'}} gutter={[40, 40]} justify={'center'} align={'middle'}>
-        <H3 style={{color: theme.colors.txtLight.white, fontSize: '30px', textAlign: 'center'}} >Referencer</H3>
-        {content.refImage.length > 0 && content.refImage.map((img, key )=> (
-         
-          <Col xs={24} sm={12} md={12} lg={10} key={key}>
-                      <RefCard refImage={img} key={key} />
-
-            </Col>
-            ))}
-        </Row>
-        </SiteContent>
-        <SiteContent background={'white'}>
-        <SectionRow>
-          <SectionCol xs={{span: 24, order: 2}} md={{span: 12, order: 2}}>
-            <H3>{content.sections[2].title}</H3>
-            <TextRegularMarkdown><ReactMarkdown>{content.sections[2].description.description}</ReactMarkdown></TextRegularMarkdown>
-          </SectionCol>
-          <Col xs={{span: 24, order: 1}} md={{span: 12, order: 1}}>
-            <SectionImg imgStyle={{objectFit: 'contain'}} image={content.sections[2].image.gatsbyImageData} alt={content.sections[2].image.title} />
-          </Col>
-        </SectionRow>
       </SiteContent>
     </div>
   );
