@@ -69,7 +69,7 @@ const FooterComponent: React.FC<Props> = ({locale, contactRef}: Props) => {
           <TextXsmallBold>Adresse</TextXsmallBold>
           <TextXsmall>Marielundvej 18, 2730 Herlev</TextXsmall>
           <TextXsmall>Danmark</TextXsmall>
-          <TextXsmall>CVR: 37701734</TextXsmall>
+          <TextXsmall>CVR: 42667269</TextXsmall>
 
 
           <TextXsmallBold style={{marginTop: '1.5rem'}}>EMAIL</TextXsmallBold>
