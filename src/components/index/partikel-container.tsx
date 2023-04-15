@@ -24,8 +24,8 @@ export class ParticlesContainer extends PureComponent<unknown> {
               mode: "grab",
               parallax: {
                 enable: true,
-                force: 60,
-                smooth: 10
+                force: 100,
+                smooth: 50
               }
             },
             resize: true,
@@ -75,7 +75,7 @@ export class ParticlesContainer extends PureComponent<unknown> {
             value: 0.5,
           },
           shape: {
-            type: "circle",
+            type: "triangle",
           },
           size: {
             value: { min: 1, max: 7 },

@@ -91,7 +91,7 @@ const FooterComponent: React.FC<Props> = ({locale, contactRef}: Props) => {
     <StyledFooter>
       <InnerFooter style={{marginTop: 0}}>
         <Row justify="center">
-          <TextSmallBold>{`© 2022 UNQTech ApS - All rights reserved`}</TextSmallBold>
+          <TextSmallBold>{`© 2023 UNQTech ApS - All rights reserved`}</TextSmallBold>
         </Row>
       </InnerFooter>
     </StyledFooter>

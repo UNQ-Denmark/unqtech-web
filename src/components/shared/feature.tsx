@@ -5,7 +5,6 @@ import React from 'react'
 import ReactMarkdown from 'react-markdown'
 import { BtnBlue } from './button'
 import { ISection } from './contentful.interface'
-import { theme } from './theme'
 import { H3Bold, TextSmallMarkdown } from './typography'
 
 
@@ -13,6 +12,7 @@ const Img = styled(GatsbyImage)`
     height: 200px;
     width: 200px;
     border-radius: 100px;
+    filter: grayscale(80%);
     `
 
 const FeatureBody = styled.div`
